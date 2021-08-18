@@ -1,0 +1,12 @@
+h2 {
+    font-size: 48px;
+    line-height: 58px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    margin-top: 0;
+    margin-bottom: 100px;
+    text-transform: uppercase;
+}
+.space {
+    margin-bottom: 200px;
+}

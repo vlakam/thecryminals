@@ -1,0 +1,48 @@
+/* .gridOne {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: space-between;
+    justify-content: space-around;
+    grid-gap: 50px
+}
+.gridTwo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-content: space-between;
+    justify-content: space-around;
+    grid-gap: 50px
+} */
+.grid {
+    display: grid;
+    grid-gap: 100px;
+}
+
+.flex {
+    display: flex;
+}
+.flex > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 74px;
+    max-width: 497px;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 13px;
+    color: #000000;
+}
+.grid > li {
+    margin: 0;
+}
+.grid > li:nth-child(2n) {
+    flex-direction: row-reverse;
+}
+.grid > li:nth-child(2n) > div {
+    margin-left: 0;
+    margin-right: 74px;
+}
+.grid > li > img {
+    max-width: 278px;
+    border-radius: 50%;
+}

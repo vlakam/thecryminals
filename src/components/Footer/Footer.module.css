@@ -1,0 +1,22 @@
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 200px;
+}
+footer > img {
+  max-width: 225px;
+}
+.rights {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.mint {
+  justify-content: center;
+  margin-top: 0;
+}

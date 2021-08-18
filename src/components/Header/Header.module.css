@@ -1,0 +1,18 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+header > img {
+  max-width: 225px;
+}
+header > a {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+header > a:hover {
+  border-bottom: 0;
+}

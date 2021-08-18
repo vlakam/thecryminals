@@ -1,0 +1,27 @@
+h1 {
+    margin-top: 200px;
+    margin-bottom: 100px;
+    font-size: 3rem;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    line-height: 59px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.gifbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    font-size: 18px;
+}
+.gifbox > img {
+    width: 542px;
+    height: 542px;
+    margin-left: 73px;
+    border-radius: 50%;
+}
+.gifbox > p {
+    margin: 0;
+}

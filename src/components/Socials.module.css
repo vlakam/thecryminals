@@ -1,0 +1,40 @@
+.social {
+    display: flex;
+}
+.social > li {
+    margin-right: 60px;
+}
+.social > li:last-child {
+    margin-right: 0;
+}
+
+.social a {
+    transition: 0.3s;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+path {
+    transition: 0.3s;
+}
+
+.twitter:hover path {
+    fill: #1DA1F2
+}
+
+.discord:hover path {
+    fill: #7289DA;
+}
+
+.opensea:hover path {
+    fill: #1868B7;
+}
+
+
+
+
