@@ -10,19 +10,21 @@ import Team from "../components/Team";
 const HomePage = () => {
   return (
     <>
-      <Preview />
-      <Wrapper>
-        <About />
-      </Wrapper>
-      <Wrapper>
-        <Roadmap />
-      </Wrapper>
-      <Wrapper>
-        <FAQ />
-      </Wrapper>
-      <Wrapper>
-        <Team />
-      </Wrapper>
+      <main id="page-wrap">
+        <Preview />
+        <Wrapper>
+          <About />
+        </Wrapper>
+        <Wrapper>
+          <Roadmap />
+        </Wrapper>
+        <Wrapper>
+          <FAQ />
+        </Wrapper>
+        <Wrapper>
+          <Team />
+        </Wrapper>
+      </main>
     </>
   );
 };

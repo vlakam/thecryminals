@@ -1,16 +1,24 @@
-import classes from './Preview.module.css'
-import logo from '../assets/logo.png'
-import wrapper from '../assets/wrapper.png'
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import classes from "./Preview.module.css";
+import logo from "../assets/logo.png";
+import wrapper from "../assets/wrapper.png";
 
 const Preview = () => {
-    return(
-        <div className={classes.wrapperImg} style={{backgroundImage : `url(${wrapper})`}}>
-            <div className={classes.content}>
-                <img src ={logo}/>
-                <a href="#">MINT YOUR CRYMINAL</a>
-            </div>
-        </div>
-    );
-}
+  const [isComming, setIsComming] = useState(true);
+  return (
+    <div
+      className={classes.wrapperImg}
+      style={{ backgroundImage: `url(${wrapper})` }}
+    >
+      <div className={classes.content}>
+        <img src={logo} />
+        {!isComming && <Link to="/mint">MINT YOUR CRYMINAL</Link>}
+        {isComming && <span className={classes.comming}>COMMING SOON</span>}
+      </div>
+    </div>
+  );
+};
 
-export default Preview
+export default Preview;

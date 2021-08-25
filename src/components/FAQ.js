@@ -6,12 +6,12 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from "react-accessible-accordion";
-import "react-accessible-accordion/dist/fancy-example.css";
+// import "react-accessible-accordion/dist/fancy-example.css";
 
 const FAQ = () => {
   return (
     <section id="faq">
-      <h2>FAQ</h2>
+      <h2>ANY QUESTIONS?</h2>
       <Accordion>
         <AccordionItem>
           <AccordionItemHeading>

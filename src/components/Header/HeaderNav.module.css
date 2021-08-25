@@ -1,20 +1,26 @@
 ul {
-    display: flex;
+  display: flex;
 }
 ul > li {
-    margin-right: 65px;
+  margin-right: 65px;
 }
 ul > li:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 a {
-    text-transform: uppercase;
-    transition: 0.3s;
-    border-bottom: 2px solid transparent;
-    padding-bottom: 5px;
+  text-transform: uppercase;
+  transition: 0.3s;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 5px;
 }
 
 a:hover {
-    border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+
+@media (max-width: 1200px) {
+  ul > li {
+    margin-right: 30px;
+  }
 }

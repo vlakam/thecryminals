@@ -1,10 +1,23 @@
 header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 4;
+  background: #000;
+}
+.headwrap {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 60px 0;
-  max-width: 1200px;
-  margin: 0 auto;
+}
+.headwrap > a {
+  padding-bottom: 0;
+  display: flex;
+  margin-bottom: 0;
+  border-bottom: 0;
 }
 header > img {
   max-width: 225px;
@@ -13,6 +26,52 @@ header > a {
   border-bottom: 0;
   padding-bottom: 0;
 }
-header > a:hover {
+.headwrap > a:hover {
   border-bottom: 0;
+}
+
+.connect {
+  cursor: pointer;
+  background: #d05e39;
+  border-radius: 13px;
+  padding: 10px 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  border: 1px solid transparent;
+  transition: 0.3s;
+}
+.connect:hover {
+  border: 1px solid black;
+  background: #fff;
+  color: #000;
+}
+
+@media (max-width: 1200px) {
+  .headwrap {
+    justify-content: initial;
+  }
+  .headwrap > a {
+    margin-right: 30px;
+  }
+}
+
+@media (max-width: 911px) {
+  .headwrap > nav {
+    display: none;
+  }
+  .headwrap {
+    padding: 15px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  header .connect {
+    display: none;
+  }
+  .connect {
+    margin-top: 30px;
+  }
 }

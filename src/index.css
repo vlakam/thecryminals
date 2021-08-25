@@ -1,27 +1,225 @@
+@font-face {
+  font-family: "OldTyper";
+  src: local("OldTyper"), url(./assets/fonts/old_typer.TTF) format("truetype");
+}
+@font-face {
+  font-family: "Shtozer";
+  src: local("Shtozer"), url(./assets/fonts/Shtozer.ttf) format("truetype");
+}
+@font-face {
+  font-family: "ShtozerNorm";
+  src: local("ShtozerNorm"),
+    url(./assets/fonts/ShtozerNorm.ttf) format("truetype");
+}
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 body {
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
+  font-family: "OldTyper";
   color: #fff;
   background-color: #000000;
 }
 
 ul {
- list-style: none;
- padding: 0;
- margin: 0;   
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 a {
-  color :#fff;
+  color: #fff;
   text-decoration: none;
 }
 
 hr {
   margin-top: 200px;
   margin-bottom: 200px;
+}
+
+.accordion {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.accordion__item + .accordion__item {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.accordion__button {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  font-size: 24px;
+  line-height: 25px;
+  font-family: "Shtozer";
+  letter-spacing: 0.05em;
+  color: #fff;
+  cursor: pointer;
+  padding: 50px 0;
+  width: 100%;
+  text-align: left;
+  position: relative;
+}
+
+.accordion__button:hover {
+  /* background-color: #ddd; */
+}
+
+.accordion__button:before {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: calc(50% - 15px);
+  content: "";
+  height: 18px;
+  width: 18px;
+  margin-right: 62px;
+  border-bottom: 4px solid currentColor;
+  border-right: 4px solid currentColor;
+  transform: rotate(-135deg);
+  font-size: 48px;
+  line-height: 58px;
+}
+
+.accordion__button[aria-expanded="true"]::before,
+.accordion__button[aria-selected="true"]::before {
+  transform: rotate(45deg);
+}
+.accordion__button[aria-expanded="true"],
+.accordion__button[aria-selected="true"] {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+[hidden] {
+  display: none;
+}
+
+.accordion__panel {
+  padding: 25px 0 50px;
+  font-size: 16px;
+  line-height: 140%;
+  font-family: "OldTyper";
+  letter-spacing: 0.05em;
+  animation: fadein 0.35s ease-in;
+  margin: 0;
+}
+
+/* -------------------------------------------------- */
+/* ---------------- Animation part ------------------ */
+/* -------------------------------------------------- */
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 16px;
+  top: 64px;
+  display: none;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #fff;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+  top: 0;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 1200px) {
+  body {
+    padding: 0 16px;
+  }
+  .bm-burger-button {
+    display: block;
+  }
+}
+
+@media (max-width: 911px) {
+  .bm-burger-button {
+    width: 36px;
+    height: 30px;
+    right: 16px;
+    top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .accordion__button:before {
+    margin-right: 20px;
+  }
+  .accordion__panel {
+    padding: 10px 0 20px;
+    font-size: 15px;
+  }
+  .accordion__button {
+    padding: 30px 0;
+  }
 }

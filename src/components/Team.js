@@ -1,10 +1,11 @@
-import classes from './Team.module.css'
-import pick from '../assets/pick.png'
+import classes from "./Team.module.css";
+import pick from "../assets/pick.png";
+import wanted from "../assets/wanted.png";
 const Team = () => {
-    return(
-        <section id='team'>
-            <h2>The Team</h2>
-            {/* <ul className={classes.gridOne}>
+  return (
+    <section id="team">
+      <h2>THE PARTNERS IN CRIME</h2>
+      {/* <ul className={classes.gridOne}>
                 <li>
                     <img src={pick}/>
                 </li>
@@ -12,44 +13,65 @@ const Team = () => {
                     <img src={pick}/>
                 </li>
             </ul> */}
-            <ul className={classes.grid}>
-                <li className={classes.flex}>
-                    <img src={pick}/>
-                    <div>
-                        <p>KARAS 0564</p>
-                        <p>Designer, tattoo artist</p>
-                    </div>
-                </li>
-                <li className={classes.flex}>
-                    <img src={pick}/>
-                    <div>
-                        <p>WILD CAKE</p>
-                        <p>Dev, creator of Rebel Kids</p>
-                    </div>
-                </li>
-                <li className={classes.flex}>
-                    <img src={pick}/>
-                    <div>
-                        <p>LERAND94</p>
-                        <p>Concept creator, web-developer</p>
-                    </div>
-                </li>
-                <li className={classes.flex}>
-                    <img src={pick}/>
-                    <div>
-                        <p>XROUTX</p>
-                        <p>Community manager, marketing</p>
-                    </div>
-                </li>
-                <li className={classes.flex}>
-                    <img src={pick}/>
-                    <div>
-                        <p>FLOZEE</p>
-                        <p>UI / UX designer</p>
-                    </div>
-                </li>
-            </ul>
-        </section>
-    );
-}
+      <div className={classes.team}>
+        <img src={wanted} className={classes.teamPreview} />
+        <ul className={classes.grid}>
+          <li className={classes.flex}>
+            <img src={pick} />
+            <div>
+              <p className={classes.item}>KARAS0564</p>
+              <p>
+                Designer
+                <br />
+                Tattoo artist
+              </p>
+            </div>
+          </li>
+          <li className={classes.flex}>
+            <img src={pick} />
+            <div>
+              <p className={classes.item}>WILD CAKE</p>
+              <p>
+                Developer
+                <br />
+                Creator of Rebel Kids
+              </p>
+            </div>
+          </li>
+          <li className={classes.flex}>
+            <img src={pick} />
+            <div>
+              <p className={classes.item}>LERAND94</p>
+              <p>
+                Concept creator
+                <br />
+                Web-developer
+              </p>
+            </div>
+          </li>
+        </ul>
+        <ul className={[classes.grid, classes.secondGrid].join(" ")}>
+          <li className={classes.flex}>
+            <img src={pick} />
+            <div>
+              <p className={classes.item}>XROUTX</p>
+              <p>
+                Project manager
+                <br />
+                Marketing
+              </p>
+            </div>
+          </li>
+          <li className={classes.flex}>
+            <img src={pick} />
+            <div>
+              <p className={classes.item}>FLOZEE</p>
+              <p>UI / UX designer</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  );
+};
 export default Team;

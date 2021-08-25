@@ -9,13 +9,15 @@ const Footer = (params) => {
     <>
       <footer className={params.mint ? classes.mint : null}>
         {!params.mint && <img src={logo} />}
+        {!params.mint && (
+          <p className={classes.rights}>
+            ALL RIGHTS RESERVED
+            <br />
+            2021
+          </p>
+        )}
 
-        <p className={classes.rights}>
-          ALL RIGHTS RESERVED
-          <br />
-          2021
-        </p>
-        {!params.mint && <Socials />}
+        <Socials />
       </footer>
     </>
   );
