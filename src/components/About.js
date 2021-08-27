@@ -1,5 +1,5 @@
 import classes from "./About.module.css";
-import gif from "../assets/pick.png";
+import gif from "../assets/gif.gif";
 import Chain from "./UI/Chain";
 const About = () => {
   return (

@@ -66,6 +66,11 @@ hr {
   text-align: left;
   position: relative;
 }
+.accordion__button > p {
+  width: calc(100% - 50px);
+  text-transform: uppercase;
+  margin: 0;
+}
 
 .accordion__button:hover {
   /* background-color: #ddd; */
@@ -131,7 +136,7 @@ hr {
   width: 36px;
   height: 30px;
   right: 16px;
-  top: 64px;
+  top: 16px;
   display: none;
 }
 

@@ -1,5 +1,5 @@
 import classes from "./Header.module.css";
-import logo from "../../assets/Cryminals.svg";
+import logo from "../../assets/Cryminals.png";
 
 import HeaderNav from "./HeaderNav";
 import Socials from "../Socials";

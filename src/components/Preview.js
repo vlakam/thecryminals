@@ -15,7 +15,7 @@ const Preview = () => {
       <div className={classes.content}>
         <img src={logo} />
         {!isComming && <Link to="/mint">MINT YOUR CRYMINAL</Link>}
-        {isComming && <span className={classes.comming}>COMMING SOON</span>}
+        {isComming && <span className={classes.comming}>COMING SOON</span>}
       </div>
     </div>
   );

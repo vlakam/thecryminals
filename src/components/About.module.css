@@ -21,7 +21,7 @@ h1 {
   max-width: 542px;
   max-width: 50%;
   margin-left: 73px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 .gifbox > p {
   margin: 0;

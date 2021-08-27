@@ -12,10 +12,12 @@ const FAQ = () => {
   return (
     <section id="faq">
       <h2>ANY QUESTIONS?</h2>
-      <Accordion>
+      <Accordion allowZeroExpanded allowMultipleExpanded>
         <AccordionItem>
           <AccordionItemHeading>
-            <AccordionItemButton>What is NFT?</AccordionItemButton>
+            <AccordionItemButton>
+              <p>What is NFT?</p>
+            </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
@@ -28,7 +30,9 @@ const FAQ = () => {
         </AccordionItem>
         <AccordionItem>
           <AccordionItemHeading>
-            <AccordionItemButton>What is minting?</AccordionItemButton>
+            <AccordionItemButton>
+              <p>What is minting?</p>
+            </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
@@ -40,7 +44,7 @@ const FAQ = () => {
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              HOW MUCH DOES THE MINT COST?
+              <p>HOW MUCH DOES THE MINT COST?</p>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
@@ -55,7 +59,7 @@ const FAQ = () => {
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              What can i do with my cryminal?
+              <p>What can i do with my cryminal?</p>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
@@ -69,7 +73,9 @@ const FAQ = () => {
         </AccordionItem>
         <AccordionItem>
           <AccordionItemHeading>
-            <AccordionItemButton>How to contact the team?</AccordionItemButton>
+            <AccordionItemButton>
+              <p>How to contact the team?</p>
+            </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>You can reach us on Twitter and Discord any time!</p>

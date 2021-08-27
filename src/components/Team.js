@@ -1,5 +1,9 @@
 import classes from "./Team.module.css";
-import pick from "../assets/pick.png";
+import dev1 from "../assets/dev1.png";
+import dev2 from "../assets/dev2.png";
+import dev3 from "../assets/dev3.png";
+import dev4 from "../assets/dev4.png";
+import dev5 from "../assets/dev5.png";
 import wanted from "../assets/wanted.png";
 const Team = () => {
   return (
@@ -17,7 +21,7 @@ const Team = () => {
         <img src={wanted} className={classes.teamPreview} />
         <ul className={classes.grid}>
           <li className={classes.flex}>
-            <img src={pick} />
+            <img src={dev1} />
             <div>
               <p className={classes.item}>KARAS0564</p>
               <p>
@@ -28,7 +32,7 @@ const Team = () => {
             </div>
           </li>
           <li className={classes.flex}>
-            <img src={pick} />
+            <img src={dev2} />
             <div>
               <p className={classes.item}>WILD CAKE</p>
               <p>
@@ -39,7 +43,7 @@ const Team = () => {
             </div>
           </li>
           <li className={classes.flex}>
-            <img src={pick} />
+            <img src={dev3} />
             <div>
               <p className={classes.item}>LERAND94</p>
               <p>
@@ -52,7 +56,7 @@ const Team = () => {
         </ul>
         <ul className={[classes.grid, classes.secondGrid].join(" ")}>
           <li className={classes.flex}>
-            <img src={pick} />
+            <img src={dev4} />
             <div>
               <p className={classes.item}>XROUTX</p>
               <p>
@@ -63,7 +67,7 @@ const Team = () => {
             </div>
           </li>
           <li className={classes.flex}>
-            <img src={pick} />
+            <img src={dev5} />
             <div>
               <p className={classes.item}>FLOZEE</p>
               <p>UI / UX designer</p>
