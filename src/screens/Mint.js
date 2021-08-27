@@ -1,7 +1,7 @@
 import classes from "./Mint.module.css";
 import mintWrapper from "../assets/mintWrapper.png";
 import { useState } from "react";
-import pick from "../assets/pick.png";
+import gif from "../assets/gif.gif";
 
 const Mint = () => {
   const [counter, setCounter] = useState(1);
@@ -38,8 +38,8 @@ const Mint = () => {
                   className={classes.arrow}
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M24 0L30 6L12 24L30 42L24 48L0 24L24 0Z"
                     fill="black"
                   />
@@ -57,8 +57,8 @@ const Mint = () => {
                   className={classes.arrow}
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M6 48L-1.38281e-06 42L18 24L1.76441e-06 6.00001L6 5.53125e-06L30 24L6 48Z"
                     fill="black"
                   />
@@ -71,7 +71,7 @@ const Mint = () => {
             </a>
           </div>
           <div className={classes.right}>
-            <img src={pick} />
+            <img src={gif} />
             <div>
               <p className={classes.desc}>MAX LIMIT PER TRANSACTION: 20</p>
               <p className={classes.desc}>PRICE: 0.05 ETH</p>
