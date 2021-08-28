@@ -28,7 +28,7 @@ const Socials = () => {
       </li>
       <li>
         <a
-          href="discord.gg/TheCryminalsNFT"
+          href="https://discord.gg/TheCryminalsNFT"
           target="_blank"
           className={classes.discord}
         >
@@ -55,7 +55,11 @@ const Socials = () => {
         </a>
       </li>
       <li>
-        <a href="openseo.io" target="_blank" className={classes.opensea}>
+        <a
+          href="https://openseo.io"
+          target="_blank"
+          className={classes.opensea}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="34"
