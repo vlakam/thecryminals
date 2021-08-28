@@ -23,8 +23,8 @@ const FAQ = () => {
             <p>
               NFT (non-fungible token) is an information or data stored on the
               blockchain. Owning an NFT means owning the original image, music
-              track, animation - you name it! You can easily buy, sell and trade
-              any pieces of art as well as store them in your Metamask wallet.
+              track, animation - you name it! You can easily trade any pieces of
+              art as well as store them in your Metamask wallet.
             </p>
           </AccordionItemPanel>
         </AccordionItem>
@@ -65,9 +65,9 @@ const FAQ = () => {
           <AccordionItemPanel>
             <p>
               Literally anything your heart desires! As long as you own your
-              personal Cryminal, you have a right to use it as you wish! Besides
-              that, you become a member of The Gang which lets you decide how to
-              develop the project in the future.
+              personal Cryminal, you have a right to use it as you wish! <br />
+              Besides that, you become a member of The Gang which lets you
+              decide how to develop the project in the future.
             </p>
           </AccordionItemPanel>
         </AccordionItem>
