@@ -4,6 +4,7 @@ import dev2 from "../assets/dev2.png";
 import dev3 from "../assets/dev3.png";
 import dev4 from "../assets/dev4.png";
 import dev5 from "../assets/dev5.png";
+import insta from "../assets/insta.svg";
 import wanted from "../assets/wanted.png";
 const Team = () => {
   return (
@@ -23,7 +24,14 @@ const Team = () => {
           <li className={classes.flex}>
             <img src={dev1} />
             <div>
-              <p className={classes.item}>KARAS0564</p>
+              <div className={classes.socialBlock}>
+                <a href="https://www.instagram.com/karas0564/" target="_blank">
+                  <img src={insta} />
+                </a>
+              </div>
+              <p className={[classes.item, classes.insta].join(" ")}>
+                KARAS0564
+              </p>
               <p>
                 Designer
                 <br />
