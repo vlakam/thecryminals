@@ -87,14 +87,14 @@ hr {
   margin-right: 62px;
   border-bottom: 4px solid currentColor;
   border-right: 4px solid currentColor;
-  transform: rotate(-135deg);
+  transform: rotate(45deg);
   font-size: 48px;
   line-height: 58px;
 }
 
 .accordion__button[aria-expanded="true"]::before,
 .accordion__button[aria-selected="true"]::before {
-  transform: rotate(45deg);
+  transform: rotate(-135deg);
 }
 .accordion__button[aria-expanded="true"],
 .accordion__button[aria-selected="true"] {
