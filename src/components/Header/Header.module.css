@@ -11,7 +11,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8pxpx 0;
+  padding: 8px 0;
 }
 .headwrap > a {
   padding-bottom: 0;
@@ -42,6 +42,7 @@ header > a {
   letter-spacing: 0.05em;
   border: 1px solid transparent;
   transition: 0.3s;
+  font-family: "OldTyper";
 }
 .connect:hover {
   border: 1px solid black;

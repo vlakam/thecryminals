@@ -18,7 +18,8 @@ h1 {
   font-size: 18px;
 }
 .gifbox > img {
-  max-width: 542px;
+  max-width: 585px;
+  width: 100%;
   max-width: 50%;
   margin-left: 73px;
   /* border-radius: 50%; */

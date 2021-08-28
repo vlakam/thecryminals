@@ -14,7 +14,10 @@ const Roadmap = () => {
       <div className={classes.roadmapBox}>
         <div className={classes.roadmapBoxItem}>
           <img src={road1} />
-          <p>Launch of the collection on September 1st!</p>
+          <p>
+            Launch of the collection!
+            <br /> (exact date TBA)
+          </p>
         </div>
         <div className={classes.roadmapBoxItem}>
           <img src={road2} />
