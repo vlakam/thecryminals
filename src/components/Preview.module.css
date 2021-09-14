@@ -67,6 +67,16 @@
   letter-spacing: 0.05em;
   font-family: "Shtozer";
 }
+@media (max-width: 2560px) {
+  .wrapperImg {
+    height: 1050px;
+  }
+}
+@media (max-width: 1920px) {
+  .wrapperImg {
+    height: 777px;
+  }
+}
 
 @media (max-width: 911px) {
   .wrapperImg {
