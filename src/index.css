@@ -2,14 +2,18 @@
   font-family: "OldTyper";
   src: local("OldTyper"), url(./assets/fonts/old_typer.TTF) format("truetype");
 }
-@font-face {
+/* @font-face {
   font-family: "Shtozer";
   src: local("Shtozer"), url(./assets/fonts/Shtozer.ttf) format("truetype");
-}
+} */
 @font-face {
   font-family: "ShtozerNorm";
   src: local("ShtozerNorm"),
     url(./assets/fonts/ShtozerNorm.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Shtozer";
+  src: local("ShtozerOb"), url(./assets/fonts/ShtozerOb.otf) format("opentype");
 }
 
 * {
