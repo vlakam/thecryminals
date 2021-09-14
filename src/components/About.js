@@ -7,20 +7,26 @@ const About = () => {
       <h1>Welcome to the gang</h1>
       <div className={classes.gifbox}>
         <p>
-          The Cryminals is a collection of 10,000 NFTs — digital collectibles
-          living on the Ethereum blockchain.
+          Art is not for everybody? Art = commerce? Art is life? How far would
+          YOU go to become a part of it?
           <br />
           <br />
-          Every single gangster is unique and is combined from over 400 traits -
-          hairstyles, eyes, clothes, tattoos, weapons and many others!
+          Our main hero, Spike, has become the superior criminal among two most
+          dangerous gangs of Metacity - Nomads and Gangsters! But,
+          unfortunately, there are so few heroes like him...
+          <br />
+          Therefore we need YOUR help!
           <br />
           <br />
-          Owning a Cryminal will also give you an opportunity to become a part
-          of the strong community and decide its future fate.
+          Look, it’s simple as that - you cooperate with us, and we reward you
+          with valuable and unique pieces of art!
           <br />
           <br />
-          Are you ready to join The Gang? Keep your weapons up! The Cryminals
-          are coming...
+          LET'S MAKE ART A COMMON HERITAGE AGAIN!
+          <br />
+          <br />
+          Are you ready to join The Gang? Then keep your weapons up! The
+          Cryminals are coming...
         </p>
         <img src={gif} />
       </div>

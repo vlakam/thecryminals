@@ -10,7 +10,7 @@
   background-position: center;
   position: relative;
 }
-.wrapperImg::before {
+/* .wrapperImg::before {
   position: absolute;
   content: "";
   width: 100%;
@@ -19,7 +19,7 @@
   display: block;
   top: 0;
   z-index: 0;
-}
+} */
 .content {
   display: flex;
   flex-direction: column;

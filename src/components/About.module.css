@@ -27,6 +27,8 @@ h1 {
 .gifbox > p {
   margin: 0;
   max-width: 50%;
+  font-weight: 100;
+  line-height: 22px;
 }
 
 @media (max-width: 911px) {

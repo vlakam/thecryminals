@@ -1,9 +1,9 @@
-import road1 from "../assets/road1.png";
-import road2 from "../assets/road2.png";
-import road3 from "../assets/road3.png";
-import road4 from "../assets/road4.png";
-import road5 from "../assets/road5.png";
-import road6 from "../assets/road6.png";
+import road1 from "../assets/road1(old).png";
+import road2 from "../assets/road2(old).png";
+import road3 from "../assets/road3(old).png";
+import road4 from "../assets/road4(old).png";
+import road5 from "../assets/road5(old).png";
+import road6 from "../assets/road6(old).png";
 import classes from "./Roadmap.module.css";
 import Chain from "./UI/Chain";
 
