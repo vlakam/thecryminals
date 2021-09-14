@@ -1,5 +1,5 @@
 import classes from "./Mint.module.css";
-import mintWrapper from "../assets/mintWrapper.png";
+import mintWrapper from "../assets/mintWrapper2.png";
 import { useState } from "react";
 import gif from "../assets/gif.gif";
 
