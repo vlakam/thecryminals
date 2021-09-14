@@ -27,6 +27,7 @@
 }
 .mainPic img {
   width: 100%;
+  max-width: 708px;
 }
 .mainPic > p {
   margin-top: 50px;
