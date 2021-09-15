@@ -13,7 +13,7 @@ function App() {
       <Switch>
         <Route path="/" exact>
           <Header />
-          <HomePage />
+          <Test />
           <Footer />
         </Route>
         <Route path="/mint" exact>
@@ -21,11 +21,11 @@ function App() {
           <Mint />
           <Footer mint={true} />
         </Route>
-        <Route path="/test" exact>
+        {/* <Route path="/test" exact>
           <Header />
           <Test />
           <Footer />
-        </Route>
+        </Route> */}
       </Switch>
     </Fragment>
   );

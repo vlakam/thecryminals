@@ -14,7 +14,7 @@ import Chain from "./UI/Chain";
 const Roadmap = () => {
   return (
     <section id="roadmap">
-      <h2>sales milestones</h2>
+      <h2>AVAILABLE LOOT TO BE SHARED</h2>
       <p>
         Pre-sale activities include tons of giveaways on our Twitter and
         Discord, including art and meme contests. All winners will receive free
@@ -26,6 +26,11 @@ const Roadmap = () => {
         will be transferred to our Cryme Pool. It will be used for our
         villanious and noble mission at the same time - bringing art back to
         people!
+        <br />
+        <br />
+        Every 500 mints will be celebrated with $1000 giveaway, but much bigger
+        loot will be shared every 1000 mints!Let’s find out together what every
+        Cryminal has a chance to get!
       </p>
       <div className={classes.roadmapBox}>
         <div className={classes.roadmapBoxItem}>
@@ -87,24 +92,35 @@ const Roadmap = () => {
           a Bored Ape Yacht Club NFT!
         </p>
       </div>
+      <h2>
+        NOW THE LOOT IS SHARED...
+        <br /> WHAT’S NEXT?
+      </h2>
       <div className={classes.post}>
-        <p>After 100% of The Cryminals collection is minted:</p>
+        <p>
+          Do you really think we’re gonna stop there? There is still A LOT of
+          things prepared for you!
+        </p>
         <ul>
+          <li>
+            - <span>MORE LOOT SHARING</span> will be conducted regularly in The
+            Gang!
+          </li>
           <li>
             - Exclusive <span>merchandise store</span> will be launched. Be
             ready for multiple merch giveaways for Cryminals owners!
           </li>
           <li>
             - An original <span>NFT comic book </span>, where The Cryminals'
-            backstory is revealed, will be airdropped to The Cryminals owners!
+            backstory is revealed, will be airdropped to The Cryminals holders!
           </li>
           <li>
-            - We start to develop a <span>video game</span> based on our story
-            straight away!
+            - We start to develop a <span>video game with secret prizes</span>{" "}
+            based on our story straight away!
           </li>
           <li>
-            - A <span>public voting</span> will be conducted to decide the
-            future fate of The Gang!
+            - As we recruit new gangsters, a <span>public voting</span> will be
+            conducted to decide the future missions and adventures of The Gang!
           </li>
         </ul>
         <small>

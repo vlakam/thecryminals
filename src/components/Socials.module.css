@@ -61,7 +61,9 @@ path {
   }
 
   .social a {
-    display: inline;
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
   }
   .social a > svg {
     flex: none;

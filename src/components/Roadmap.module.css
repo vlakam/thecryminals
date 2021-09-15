@@ -24,6 +24,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 100px;
 }
 .mainPic img {
   width: 100%;
@@ -68,6 +69,13 @@ h2 {
     margin-top: 50px;
     margin-bottom: 50px;
   }
+  .mainPic,
+  .post > ul {
+    margin-bottom: 50px;
+  }
+  .post {
+    margin-top: 50px;
+  }
 }
 @media (max-width: 768px) {
   .roadmapBox {
@@ -88,5 +96,12 @@ h2 {
   }
   .roadmapBoxItem > p {
     font-size: 15px;
+  }
+  .mainPic,
+  .post > ul {
+    margin-bottom: 30px;
+  }
+  .post {
+    margin-top: 30px;
   }
 }
