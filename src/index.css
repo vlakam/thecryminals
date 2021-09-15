@@ -105,7 +105,7 @@ button {
 .accordion__button[aria-expanded="true"]::before,
 .accordion__button[aria-selected="true"]::before {
   transform: rotate(-135deg);
-  top: 58px;
+  /* top: 58px; */
 }
 .accordion__button[aria-expanded="true"],
 .accordion__button[aria-selected="true"] {

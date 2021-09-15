@@ -24,7 +24,7 @@ const Roadmap = () => {
         <br />
         Once minted a Cryminal, you become the member of The Gang and your funds
         will be transferred to our Cryme Pool. It will be used for our
-        villanious and noble mission at the same time - bringing art back to
+        villainous and noble mission at the same time - bringing art back to
         people!
         <br />
         <br />

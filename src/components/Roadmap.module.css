@@ -19,6 +19,7 @@
   margin-bottom: 0;
   text-align: center;
   line-height: 22px;
+  letter-spacing: 0.05em;
 }
 .mainPic {
   display: flex;
@@ -46,7 +47,7 @@
 }
 .post > ul > li {
   margin-right: 0;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 .post > ul > li:last-child {
   margin-bottom: 0;

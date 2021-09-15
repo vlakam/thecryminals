@@ -11,7 +11,7 @@ import extra5 from "../assets/extra5.png";
 const About = () => {
   return (
     <section id="about">
-      <h1>Welcome to the gang</h1>
+      <h1>Welcome to the gang!</h1>
       <div className={classes.gifbox}>
         <p>
           Art is not for everybody? Art = commerce? Art is life? How far would
