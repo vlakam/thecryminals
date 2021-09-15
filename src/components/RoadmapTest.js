@@ -29,7 +29,7 @@ const Roadmap = () => {
         <br />
         <br />
         Every 500 mints will be celebrated with $1000 giveaway, but much bigger
-        loot will be shared every 1000 mints!Let’s find out together what every
+        loot will be shared every 1000 mints! Let’s find out together what every
         Cryminal has a chance to get!
       </p>
       <div className={classes.roadmapBox}>
@@ -54,8 +54,8 @@ const Roadmap = () => {
         <div className={classes.roadmapBoxItem}>
           <img src={road4} />
           <p>
-            We will also have a cute Pudgy Penguin NFT for you as we get to
-            4000!
+            We will also have a cute Pudgy Penguin NFT for you
+            <br /> as we get to 4000!
           </p>
         </div>
         <div className={classes.roadmapBoxItem}>
@@ -111,7 +111,7 @@ const Roadmap = () => {
             ready for multiple merch giveaways for Cryminals owners!
           </li>
           <li>
-            - An original <span>NFT comic book </span>, where The Cryminals'
+            - An original <span>NFT comic book</span>, where The Cryminals'
             backstory is revealed, will be airdropped to The Cryminals holders!
           </li>
           <li>
