@@ -18,7 +18,7 @@ footer > img {
 }
 .mint {
   justify-content: center;
-  margin-top: 130px;
+  /* margin-top: 130px; */
 }
 @media (max-width: 1199px) {
   footer {
