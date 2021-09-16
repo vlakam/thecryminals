@@ -177,6 +177,8 @@ const Roadmap = () => {
           * The Cryminals are not affiliated with above-mentioned collections.
           <br />
           All images are used for information purposes only.
+          <br />
+          Please note: actual loot may be a different mint from the one shown.
         </small>
       </div>
       <Chain />
