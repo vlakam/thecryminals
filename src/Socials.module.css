@@ -1,0 +1,84 @@
+.social {
+  display: flex;
+}
+.social > li {
+  margin-right: 60px;
+}
+.social > li:last-child {
+  margin-right: 0;
+}
+
+.social a {
+  transition: 0.3s;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.social a > span {
+  display: none;
+}
+
+path {
+  transition: 0.3s;
+}
+
+.twitter:hover path {
+  fill: #1da1f2;
+}
+
+.discord:hover path {
+  fill: #7289da;
+}
+
+.opensea:hover path {
+  fill: #1868b7;
+}
+
+@media (max-width: 1200px) {
+  header .social {
+    display: none;
+  }
+  .social {
+    flex-direction: column;
+  }
+  .social > li {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+  .social a > span {
+    display: inline-block;
+  }
+  footer .social {
+    flex-direction: row;
+  }
+  footer .social > li {
+    margin-right: 60px;
+    margin-bottom: 0;
+  }
+
+  .social a {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .social a > svg {
+    flex: none;
+  }
+  .social a > span {
+    margin-left: 20px;
+  }
+  footer .social a > span {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  footer .social > li {
+    margin-right: 30px;
+    margin-bottom: 0;
+  }
+}

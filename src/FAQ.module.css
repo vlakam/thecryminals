@@ -1,0 +1,32 @@
+h2 {
+  font-size: 48px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin-top: 0;
+  margin-bottom: 100px;
+  text-transform: uppercase;
+}
+.space {
+  margin-bottom: 100px;
+}
+
+@media (max-width: 911px) {
+  h2 {
+    margin-bottom: 70px;
+  }
+  .space {
+    margin-bottom: 70px;
+  }
+}
+
+@media (max-width: 576px) {
+  h2 {
+    margin-bottom: 40px;
+    font-size: 36px;
+    line-height: 48px;
+  }
+  .space {
+    margin-bottom: 60px;
+  }
+}

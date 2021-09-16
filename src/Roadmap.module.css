@@ -1,0 +1,108 @@
+.roadmapBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 138px;
+  grid-row-gap: 72px;
+  margin-top: 92px;
+  margin-bottom: 92px;
+}
+.roadmapBoxItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.roadmapBoxItem > img {
+  width: 100%;
+}
+.roadmapBoxItem > p {
+  margin-top: 50px;
+  margin-bottom: 0;
+  text-align: center;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+}
+.mainPic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.mainPic img {
+  width: 100%;
+  max-width: 708px;
+}
+.mainPic > p {
+  margin-top: 50px;
+  margin-bottom: 0;
+  text-align: center;
+  max-width: 525px;
+  line-height: 22px;
+}
+.post {
+  margin-top: 100px;
+}
+.post > ul {
+  display: block;
+  margin-bottom: 73px;
+}
+.post > ul > li {
+  margin-right: 0;
+  margin-bottom: 18px;
+}
+.post > ul > li:last-child {
+  margin-bottom: 0;
+}
+.post > small {
+  display: block;
+  max-width: 500px;
+}
+.post span {
+  border-bottom: 1px solid #fff;
+}
+h2 {
+  font-family: "Shtozer";
+}
+
+@media (max-width: 911px) {
+  .roadmapBox {
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .mainPic,
+  .post > ul {
+    margin-bottom: 50px;
+  }
+  .post {
+    margin-top: 50px;
+  }
+}
+@media (max-width: 768px) {
+  .roadmapBox {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .roadmapBox {
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    grid-template-columns: 1fr;
+  }
+  .roadmapBoxItem > img {
+    width: 80%;
+  }
+  .roadmapBoxItem > p {
+    font-size: 15px;
+  }
+  .mainPic,
+  .post > ul {
+    margin-bottom: 30px;
+  }
+  .post {
+    margin-top: 30px;
+  }
+}

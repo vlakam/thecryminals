@@ -1,0 +1,124 @@
+.team {
+  position: relative;
+  height: 1697px;
+  padding-top: 461px;
+}
+.grid {
+  display: flex;
+  max-width: 708px;
+  justify-content: center;
+  margin: 0 auto;
+}
+.secondGrid {
+  margin-top: 50px;
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+.flex > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 497px;
+  width: 100%;
+  border-radius: 13px;
+  color: #000000;
+}
+.grid > li {
+  margin: 0;
+  margin-right: 30px;
+}
+.grid > li p {
+  text-align: center;
+  margin: 0;
+}
+.grid > li:last-child {
+  margin-right: 0;
+}
+.grid > li > img {
+  max-width: 216px;
+  border-radius: 50%;
+}
+
+.teamPreview {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+}
+
+.item {
+  background: #693301;
+  border-radius: 13px;
+  margin: 50px 0 25px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 38px;
+  color: #fff;
+  font-family: "Shtozer";
+  font-size: 24px;
+  line-height: 25px;
+}
+.insta {
+  margin: 14px 0 25px !important;
+}
+.socialBlock {
+  margin-top: 14px;
+}
+
+@media (max-width: 1199px) {
+  .teamPreview {
+    display: none;
+  }
+  .grid > li p {
+    color: #fff;
+  }
+  .team {
+    padding-top: 0;
+    height: auto;
+  }
+}
+@media (max-width: 768px) {
+  .teamPreview {
+    display: none;
+  }
+  .grid {
+    flex-wrap: wrap;
+  }
+  .grid > li:last-child {
+    margin-top: 50px;
+  }
+  .secondGrid > li:last-child {
+    margin-top: 0;
+  }
+  .grid > li p {
+    color: #fff;
+  }
+  .team {
+    padding-top: 0;
+    height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .grid > li > img {
+    max-width: 375px;
+  }
+  .grid > li {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+  .grid > li:last-child {
+    margin-top: 0;
+  }
+  .secondGrid {
+    margin-top: 0;
+  }
+}
