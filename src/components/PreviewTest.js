@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import classes from "./Preview.module.css";
 import logo from "../assets/logo.png";
-import wrapper from "../assets/w.png";
+import wrapper from "../assets/w.webp";
 
 const Preview = () => {
   const [isComming, setIsComming] = useState(true);

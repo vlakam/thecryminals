@@ -1,5 +1,5 @@
 import classes from "./About.module.css";
-import gif from "../assets/gif.gif";
+import gif from "../assets/gif.webm";
 import Chain from "./UI/Chain";
 
 import extra1 from "../assets/extra1.png";
@@ -7,6 +7,12 @@ import extra2 from "../assets/extra2.png";
 import extra3 from "../assets/extra3.png";
 import extra4 from "../assets/extra4.png";
 import extra5 from "../assets/extra5.png";
+
+import extra1Opt from "../assets/extra1.webp";
+import extra2Opt from "../assets/extra2.webp";
+import extra3Opt from "../assets/extra3.webp";
+import extra4Opt from "../assets/extra4.webp";
+import extra5Opt from "../assets/extra5.webp";
 
 const About = () => {
   return (
@@ -35,7 +41,10 @@ const About = () => {
           Are you ready to join The Gang? Then keep your weapons up! The
           Cryminals are coming...
         </p>
-        <img src={gif} />
+        {/* <img src={gif} /> */}
+        <video loop muted autoPlay playsInline>
+          <source src={gif} type="video/webm" />
+        </video>
       </div>
       <h2 className={classes.title}>HOW DO WE SHARE THE LOOT?</h2>
       <ol>
@@ -61,11 +70,31 @@ const About = () => {
         little hint to let you imagine how they will look like :)
       </p>
       <div className={classes.extras}>
-        <img src={extra1} />
-        <img src={extra2} />
-        <img src={extra3} />
-        <img src={extra4} />
-        <img src={extra5} />
+        <picture>
+          <source srcSet={extra1Opt} type="image/webp" />
+          <source srcSet={extra1} type="image/png" />
+          <img src={extra1} alt="extra1" />
+        </picture>
+        <picture>
+          <source srcSet={extra2Opt} type="image/webp" />
+          <source srcSet={extra2} type="image/png" />
+          <img src={extra2} alt="extra2" />
+        </picture>
+        <picture>
+          <source srcSet={extra3Opt} type="image/webp" />
+          <source srcSet={extra3} type="image/png" />
+          <img src={extra3} alt="extra3" />
+        </picture>
+        <picture>
+          <source srcSet={extra4Opt} type="image/webp" />
+          <source srcSet={extra4} type="image/png" />
+          <img src={extra4} alt="extra4" />
+        </picture>
+        <picture>
+          <source srcSet={extra5Opt} type="image/webp" />
+          <source srcSet={extra5} type="image/png" />
+          <img src={extra5} alt="extra5" />
+        </picture>
       </div>
       <Chain />
     </section>
