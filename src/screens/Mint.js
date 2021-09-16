@@ -1,7 +1,8 @@
 import classes from "./Mint.module.css";
 import mintWrapper from "../assets/mintWrapper2.png";
+import mintWrapperOpt from "../assets/mintWrapper2.webp";
 import { useState } from "react";
-import gif from "../assets/gif.gif";
+import gif from "../assets/gif.webm";
 
 const Mint = () => {
   const [counter, setCounter] = useState(1);
@@ -23,7 +24,11 @@ const Mint = () => {
   return (
     <main>
       <div className={classes.wrapper}>
-        <img src={mintWrapper} className={classes.img} />
+        <picture className={classes.img}>
+          <source srcSet={mintWrapperOpt} type="image/webp" />
+          <source srcSet={mintWrapper} type="image/png" />
+          <img src={mintWrapper} alt="mintWrapper" />
+        </picture>
         <div className={classes.content}>
           <div className={classes.left}>
             <h3>AMOUNT OF CRYMINALS</h3>
@@ -71,7 +76,9 @@ const Mint = () => {
             </a>
           </div>
           <div className={classes.right}>
-            <img src={gif} />
+            <video loop muted autoPlay playsInline>
+              <source src={gif} type="video/webm" />
+            </video>
             <div>
               <p className={classes.desc}>MAX LIMIT PER TRANSACTION: 20</p>
               <p className={classes.desc}>PRICE: 0.05 ETH</p>
