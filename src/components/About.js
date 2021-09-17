@@ -20,6 +20,7 @@ const About = () => {
       <h1>Welcome to the gang!</h1>
       <div className={classes.gifbox}>
         <p>
+          <p className={classes.price}>0,05 ETH EACH!</p>
           Art is not for everybody? Art = commerce? Art is life? How far would
           YOU go to become a part of it?
           <br />

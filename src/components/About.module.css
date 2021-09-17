@@ -13,7 +13,7 @@ h1 {
 .gifbox {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   letter-spacing: 0.05em;
   font-weight: bold;
   font-size: 16px;
@@ -50,6 +50,17 @@ ol > li {
 ol > li:last-child {
   margin-bottom: 0;
 }
+.price {
+  font-size: 36px;
+  line-height: 41px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #ff3737;
+  font-family: "Stamp";
+  margin-top: 0;
+  margin-bottom: 100px;
+  font-weight: 100;
+}
 
 @media (max-width: 911px) {
   h1 {
@@ -64,8 +75,9 @@ ol > li:last-child {
     margin-left: 0;
   }
   .gifbox > p {
-    max-width: 90%;
+    max-width: 100%;
     margin-top: 70px;
+    text-align: center;
   }
   .title,
   .extras {
@@ -73,6 +85,9 @@ ol > li:last-child {
   }
   .extras {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  .price {
+    margin-bottom: 70px;
   }
 }
 
@@ -93,5 +108,8 @@ ol > li:last-child {
   .gifbox > p {
     margin-top: 50px;
     font-size: 15px;
+  }
+  .price {
+    margin-bottom: 40px;
   }
 }
