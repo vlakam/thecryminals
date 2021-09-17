@@ -18,6 +18,8 @@ import road7Opt from "../assets/road7.webp";
 import road8Opt from "../assets/road8.webp";
 import road9Opt from "../assets/road9.webp";
 import road10Opt from "../assets/road10.webp";
+import roadShare from "../assets/roadShare.png";
+import roadShareOpt from "../assets/roadShare.webp";
 import classes from "./Roadmap.module.css";
 import Chain from "./UI/Chain";
 
@@ -56,6 +58,14 @@ const Roadmap = () => {
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
+            <source srcSet={roadShareOpt} type="image/webp" />
+            <source srcSet={roadShare} type="image/png" />
+            <img src={roadShare} alt="roadShare" />
+          </picture>
+          <p>1500 mints - $1000 shared!</p>
+        </div>
+        <div className={classes.roadmapBoxItem}>
+          <picture>
             <source srcSet={road2Opt} type="image/webp" />
             <source srcSet={road2} type="image/png" />
             <img src={road2} alt="road2" />
@@ -67,11 +77,27 @@ const Roadmap = () => {
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
+            <source srcSet={roadShareOpt} type="image/webp" />
+            <source srcSet={roadShare} type="image/png" />
+            <img src={roadShare} alt="roadShare" />
+          </picture>
+          <p>2500 mints - $1000 shared!</p>
+        </div>
+        <div className={classes.roadmapBoxItem}>
+          <picture>
             <source srcSet={road3Opt} type="image/webp" />
             <source srcSet={road3} type="image/png" />
             <img src={road3} alt="road3" />
           </picture>
           <p>3000 Cryminals on board? Here is a FVCK_CRYSTAL// NFT!</p>
+        </div>
+        <div className={classes.roadmapBoxItem}>
+          <picture>
+            <source srcSet={roadShareOpt} type="image/webp" />
+            <source srcSet={roadShare} type="image/png" />
+            <img src={roadShare} alt="roadShare" />
+          </picture>
+          <p>3500 mints - $1000 shared!</p>
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
@@ -86,6 +112,14 @@ const Roadmap = () => {
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
+            <source srcSet={roadShareOpt} type="image/webp" />
+            <source srcSet={roadShare} type="image/png" />
+            <img src={roadShare} alt="roadShare" />
+          </picture>
+          <p>4500 mints - $1000 shared!</p>
+        </div>
+        <div className={classes.roadmapBoxItem}>
+          <picture>
             <source srcSet={road5Opt} type="image/webp" />
             <source srcSet={road5} type="image/png" />
             <img src={road5} alt="road5" />
@@ -94,11 +128,27 @@ const Roadmap = () => {
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
+            <source srcSet={roadShareOpt} type="image/webp" />
+            <source srcSet={roadShare} type="image/png" />
+            <img src={roadShare} alt="roadShare" />
+          </picture>
+          <p>5500 mints - $1000 shared!</p>
+        </div>
+        <div className={classes.roadmapBoxItem}>
+          <picture>
             <source srcSet={road6Opt} type="image/webp" />
             <source srcSet={road6} type="image/png" />
             <img src={road6} alt="road6" />
           </picture>
           <p>A Cool Cat NFT will be secretly adopted as we get 6000 members!</p>
+        </div>
+        <div className={classes.roadmapBoxItem}>
+          <picture>
+            <source srcSet={roadShareOpt} type="image/webp" />
+            <source srcSet={roadShare} type="image/png" />
+            <img src={roadShare} alt="roadShare" />
+          </picture>
+          <p>6500 mints - $1000 shared!</p>
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
@@ -113,6 +163,14 @@ const Roadmap = () => {
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
+            <source srcSet={roadShareOpt} type="image/webp" />
+            <source srcSet={roadShare} type="image/png" />
+            <img src={roadShare} alt="roadShare" />
+          </picture>
+          <p>7500 mints - $1000 shared!</p>
+        </div>
+        <div className={classes.roadmapBoxItem}>
+          <picture>
             <source srcSet={road8Opt} type="image/webp" />
             <source srcSet={road8} type="image/png" />
             <img src={road8} alt="road8" />
@@ -124,11 +182,27 @@ const Roadmap = () => {
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
+            <source srcSet={roadShareOpt} type="image/webp" />
+            <source srcSet={roadShare} type="image/png" />
+            <img src={roadShare} alt="roadShare" />
+          </picture>
+          <p>8500 mints - $1000 shared!</p>
+        </div>
+        <div className={classes.roadmapBoxItem}>
+          <picture>
             <source srcSet={road9Opt} type="image/webp" />
             <source srcSet={road9} type="image/png" />
             <img src={road9} alt="road9" />
           </picture>
           <p>9000 members will pave the way to a Gutter Cat Gang NFT!</p>
+        </div>
+        <div className={classes.roadmapBoxItem}>
+          <picture>
+            <source srcSet={roadShareOpt} type="image/webp" />
+            <source srcSet={roadShare} type="image/png" />
+            <img src={roadShare} alt="roadShare" />
+          </picture>
+          <p>9500 mints - $1000 shared!</p>
         </div>
       </div>
       <div className={classes.mainPic}>

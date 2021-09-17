@@ -11,7 +11,7 @@
   flex-direction: column;
   align-items: center;
 }
-.roadmapBoxItem > img {
+.roadmapBoxItem img {
   width: 100%;
 }
 .roadmapBoxItem > p {
@@ -60,7 +60,8 @@
   border-bottom: 1px solid #fff;
 }
 h2 {
-  font-family: "Shtozer";
+  font-family: "What";
+  font-weight: 100;
 }
 
 @media (max-width: 911px) {
@@ -92,7 +93,12 @@ h2 {
     margin-bottom: 30px;
     grid-template-columns: 1fr;
   }
-  .roadmapBoxItem > img {
+  .roadmapBoxItem > picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .roadmapBoxItem img {
     width: 80%;
   }
   .roadmapBoxItem > p {

@@ -1,5 +1,5 @@
 h1 {
-  margin-top: 200px;
+  /* margin-top: 200px; */
   margin-bottom: 100px;
   font-size: 3rem;
   letter-spacing: 0.05em;
@@ -7,7 +7,8 @@ h1 {
   line-height: 59px;
   text-transform: uppercase;
   text-align: center;
-  font-family: "Shtozer";
+  font-family: "What";
+  font-weight: 100;
 }
 .gifbox {
   display: flex;
@@ -84,7 +85,7 @@ ol > li:last-child {
     grid-template-columns: 1fr;
   }
   h1 {
-    margin-top: 40px;
+    margin-top: 0;
     margin-bottom: 40px;
     font-size: 36px;
     line-height: 48px;
