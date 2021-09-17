@@ -15,6 +15,14 @@
   font-family: "Shtozer";
   src: local("ShtozerOb"), url(./assets/fonts/ShtozerOb.otf) format("opentype");
 }
+@font-face {
+  font-family: "What";
+  src: local("What"), url(./assets/fonts/What.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Stamp";
+  src: local("Stamp"), url(./assets/fonts/Stamp.ttf) format("truetype");
+}
 
 * {
   box-sizing: border-box;
@@ -67,7 +75,7 @@ button {
   border-bottom: 1px solid #fff;
   font-size: 24px;
   line-height: 25px;
-  font-family: "Shtozer";
+  font-family: "Stamp";
   letter-spacing: 0.05em;
   color: #fff;
   cursor: pointer;
