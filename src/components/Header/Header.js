@@ -4,6 +4,7 @@ import logo from "../../assets/Cryminals.png";
 import HeaderNav from "./HeaderNav";
 import Socials from "../Socials";
 import Wrapper from "../UI/Wrapper";
+import ConnectButton from './ConnectButton';
 
 import { Link } from "react-router-dom";
 
@@ -19,7 +20,7 @@ const Header = (params) => {
           </Link>
           {!params.mint && <HeaderNav />}
           {params.mint && (
-            <button className={classes.connect}>connect wallet</button>
+            <ConnectButton />
           )}
           {!params.mint && <Socials />}
         </div>
@@ -30,7 +31,7 @@ const Header = (params) => {
           <span>to Mint</span>
         </Link>
         {params.mint && (
-          <button className={classes.connect}>connect wallet</button>
+          <ConnectButton />
         )}
       </Menu>
     </>

@@ -3,22 +3,22 @@ import mintWrapper from "../assets/mintWrapper2.png";
 import mintWrapperOpt from "../assets/mintWrapper2.webp";
 import { useState } from "react";
 import gif from "../assets/gif.webm";
+import { useStore } from "effector-react";
+import { $supply, mintFx } from "../stores/web3";
 
 const Mint = () => {
+  const supply = useStore($supply);
   const [counter, setCounter] = useState(1);
-  const incrementHandler = () => {
-    if (counter >= 20) {
-      setCounter(20);
-    } else {
-      setCounter(counter + 1);
-    }
+  const mint = () => {
+    mintFx(counter);
   };
+
+  const incrementHandler = () => {
+    setCounter(Math.min(20, counter + 1));
+  };
+
   const decrementHandler = () => {
-    if (counter <= 1) {
-      setCounter(1);
-    } else {
-      setCounter(counter - 1);
-    }
+    setCounter(Math.max(1, counter - 1));
   };
 
   return (
@@ -71,7 +71,7 @@ const Mint = () => {
               </span>
             </div>
 
-            <a href="#" className={classes.mintButton}>
+            <a href="#" className={classes.mintButton} onClick={mint}>
               MINT
             </a>
           </div>
@@ -82,7 +82,7 @@ const Mint = () => {
             <div>
               <p className={classes.desc}>MAX LIMIT PER TRANSACTION: 20</p>
               <p className={classes.desc}>PRICE: 0.05 ETH</p>
-              <p className={classes.desc}>MINTED: 100/10000</p>
+              <p className={classes.desc}>MINTED: {supply.total}/{supply.max}</p>
             </div>
           </div>
         </div>
