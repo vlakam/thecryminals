@@ -4,12 +4,15 @@ import mintWrapperOpt from "../assets/mintWrapper2.webp";
 import { useState } from "react";
 import gif from "../assets/gif.webm";
 import { useStore } from "effector-react";
-import { $supply, mintFx } from "../stores/web3";
+import { $contractSaleActive, $supply, mintFx } from "../stores/web3";
 
 const Mint = () => {
   const supply = useStore($supply);
+  const isSaleAcitve = useStore($contractSaleActive);
   const [counter, setCounter] = useState(1);
+
   const mint = () => {
+    if (!isSaleAcitve) return false;
     mintFx(counter);
   };
 
@@ -71,9 +74,9 @@ const Mint = () => {
               </span>
             </div>
 
-            <a href="#" className={classes.mintButton} onClick={mint}>
+            <button className={classes.mintButton} onClick={mint} disabled={!isSaleAcitve}>
               MINT
-            </a>
+            </button>
           </div>
           <div className={classes.right}>
             <video loop muted autoPlay playsInline>
