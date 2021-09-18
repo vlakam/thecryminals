@@ -76,6 +76,8 @@
   letter-spacing: 0.05em;
   color: #000000;
   margin: 0px 40px;
+  pointer-events: none;
+  user-select: none;
 }
 .counterbox {
   margin: 41px 0;
