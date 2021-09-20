@@ -19,7 +19,7 @@ footer > img {
 .mint {
   justify-content: center;
   margin-top: 0;
-  position: absolute;
+  position: fixed;
   width: 100%;
   background: #000;
   bottom: 0;
