@@ -17,7 +17,7 @@ const Mint = () => {
 
   const gift = () => {
     giftFx();
-  }
+  };
 
   const incrementHandler = () => {
     setCounter(Math.min(20, counter + 1));
@@ -37,6 +37,7 @@ const Mint = () => {
         </picture>
         <div className={classes.content}>
           <div className={classes.left}>
+            <div className={classes.timer}>00d:00h:00m:00s</div>
             <h3>AMOUNT OF CRYMINALS</h3>
             <div className={classes.counterbox}>
               <span onClick={decrementHandler}>
@@ -76,13 +77,18 @@ const Mint = () => {
                 </svg>
               </span>
             </div>
-
-            <button className={classes.mintButton} onClick={mint} disabled={isSaleAcitve === 0}>
-              MINT
-            </button>
-            <button className={classes.mintButton} onClick={gift}>
-              GIFT
-            </button>
+            <div className={classes.btnGroup}>
+              <button className={classes.mintButton} onClick={gift}>
+                CLAIM
+              </button>
+              <button
+                className={classes.mintButton}
+                onClick={mint}
+                disabled={isSaleAcitve === 0}
+              >
+                MINT
+              </button>
+            </div>
           </div>
           <div className={classes.right}>
             <video loop muted autoPlay playsInline>
@@ -91,7 +97,9 @@ const Mint = () => {
             <div>
               <p className={classes.desc}>MAX LIMIT PER TRANSACTION: 20</p>
               <p className={classes.desc}>PRICE: 0.05 ETH</p>
-              <p className={classes.desc}>MINTED: {supply.total}/{supply.max}</p>
+              <p className={classes.desc}>
+                MINTED: {supply.total}/{supply.max}
+              </p>
             </div>
           </div>
         </div>
