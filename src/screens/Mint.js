@@ -1,14 +1,34 @@
 import classes from "./Mint.module.css";
 import mintWrapper from "../assets/mintWrapper2.png";
 import mintWrapperOpt from "../assets/mintWrapper2.webp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import gif from "../assets/gif.webm";
 import { useStore } from "effector-react";
 import { $contractSaleActive, $supply, giftFx, mintFx } from "../stores/web3";
 
+const calculateTimeLeft = (targetDate) => {
+  const difference = +targetDate - +new Date();
+  const padNumber = (num) => num.toString().padStart(2, '0');
+
+  if (difference > 0) {
+      let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      let minutes = Math.floor((difference / 1000 / 60) % 60);
+      let seconds = Math.floor((difference / 1000) % 60);
+
+      return `${padNumber(days)}d:${padNumber(hours)}h:${padNumber(minutes)}m:${padNumber(seconds)}s`;
+  }
+  
+  return 'Starting soon';
+};
+
 const Mint = () => {
+  const targetDate = new Date('2021-09-22T20:59:59.000Z');
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
   const supply = useStore($supply);
   const isSaleAcitve = useStore($contractSaleActive);
+  const isMintPending = useStore(mintFx.pending);
+  const isGiftPending = useStore(giftFx.pending);
   const [counter, setCounter] = useState(1);
 
   const mint = () => {
@@ -27,6 +47,12 @@ const Mint = () => {
     setCounter(Math.max(1, counter - 1));
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setTimeLeft(calculateTimeLeft(targetDate));
+    }, 1000);
+  }, [timeLeft])
+
   return (
     <main>
       <div className={classes.wrapper}>
@@ -37,7 +63,7 @@ const Mint = () => {
         </picture>
         <div className={classes.content}>
           <div className={classes.left}>
-            <div className={classes.timer}>00d:00h:00m:00s</div>
+            <div className={classes.timer}>{timeLeft}</div>
             <h3>AMOUNT OF CRYMINALS</h3>
             <div className={classes.counterbox}>
               <span onClick={decrementHandler}>
@@ -78,13 +104,13 @@ const Mint = () => {
               </span>
             </div>
             <div className={classes.btnGroup}>
-              <button className={classes.mintButton} onClick={gift}>
+              <button className={classes.mintButton} onClick={gift} disabled={isSaleAcitve === 0 || isGiftPending}>
                 CLAIM
               </button>
               <button
                 className={classes.mintButton}
                 onClick={mint}
-                disabled={isSaleAcitve === 0}
+                disabled={isSaleAcitve === 0 || isMintPending}
               >
                 MINT
               </button>
