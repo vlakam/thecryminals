@@ -133,8 +133,8 @@ export const $contract = $web3.map((web3) => {
 
 const getSaleActiveFx = attach({
     effect: createEffect(async ($contract) => {
-        if (!$contract) return false;
-        return $contract.methods.isSaleActive();
+        if (!$contract) return 0;
+        return parseInt(await $contract.methods.saleStatus().call());
     }),
     source: $contract,
     mapParams: (_, contract) => contract,
@@ -144,15 +144,34 @@ const getSupplyFx = attach({
     effect: createEffect(async ($contract) => {
         if (!$contract) return { max: 10000, total: 0 };
         const total = parseInt(await $contract.methods.totalSupply().call());
-        const max = parseInt(await $contract.methods.maxTokensCount().call());
+        const max = 10000;
         return { total, max };
     }),
     source: $contract,
     mapParams: (_, contract) => contract,
 });
 
-export const $contractSaleActive = restore(getSaleActiveFx.doneData, false);
+export const $contractSaleActive = restore(getSaleActiveFx.doneData, 0);
 export const $supply = restore(getSupplyFx.doneData, { total: 0, max: 10000 });
+export const $maxMintable = createStore(1);
+
+const getMaxMintableFx = attach({
+    effect: createEffect(async ({ $account, $contract }) => {
+        if (!$account || !$contract) return 0;
+        const saleStatus = parseInt(await $contract.methods.saleStatus().call());
+        if (saleStatus === 0) return 20;
+        const minted = parseInt(await $contract.methods.balanceOf($account).call());
+
+        if (saleStatus === 1) {
+            const canPresale = await $contract.methods.checkPresale().call();
+            if (!canPresale) return 0;
+            return Math.max(15 - minted, 0);
+        }
+        else return Math.max(20 - minted, 0);
+    }),
+    source: { $contract, $account },
+    mapParams: (_, a) => a,
+});
 
 export const mintFx = attach({
     effect: createEffect(async ({
@@ -162,21 +181,24 @@ export const mintFx = attach({
         $account,
         amount,
         $contractSaleActive,
+        $maxMintable,
         $web3
     }) => {
         if (!$ethereum) throw errorMessageFx("Install metamask");
         if (!$contract) throw errorMessageFx("Failed to initialize contract");
         if (!$isChainOK) throw errorMessageFx("You are on the wrong chain");
         if (!$account) throw errorMessageFx("Press connect button");
-        if (!$contractSaleActive)
+        if ($contractSaleActive === 0)
             throw errorMessageFx("This sale is not active yet");
+        if (amount > $maxMintable)
+            throw errorMessageFx(`Not able to mint above your limit: ${$maxMintable}`);
 
         try {
-            const tokenPrice = parseInt(await $contract.methods.tokenPrice().call());
+            const tokenPrice = Web3.utils.toWei(0.05, 'ether');
             const gasPrice = await $web3.eth.getGasPrice();
             let gasLimit;
             try {
-                await $contract.methods.mintAngelsOfAether(amount).estimateGas({
+                await $contract.methods.mint(amount).estimateGas({
                     value: tokenPrice * amount,
                     from: $account,
                 });
@@ -204,13 +226,68 @@ export const mintFx = attach({
         $isChainOK,
         $account,
         $contractSaleActive,
+        $maxMintable,
         $web3
     },
     mapParams: (amount, source) => ({ ...source, amount })
 });
 
+export const giftFx = attach({
+    effect: createEffect(async ({
+        $ethereum,
+        $contract,
+        $isChainOK,
+        $account,
+        $web3
+    }) => {
+        if (!$ethereum) throw errorMessageFx("Install metamask");
+        if (!$contract) throw errorMessageFx("Failed to initialize contract");
+        if (!$isChainOK) throw errorMessageFx("You are on the wrong chain");
+        if (!$account) throw errorMessageFx("Press connect button");
+
+        try {
+            const canGift = await $contract.methods.checkGift().call();
+            if (!canGift) return errorMessageFx('You are not allowed to use Gift');
+            const gasPrice = await $web3.eth.getGasPrice();
+            let gasLimit;
+            try {
+                await $contract.methods.gift().estimateGas({
+                    value: 0,
+                    from: $account,
+                });
+            } catch (e) {
+                gasLimit = 250000;
+            }
+            console.log(gasPrice, gasLimit);
+
+            const transaction = await $contract.methods.gift().send({
+                from: $account,
+                value: 0,
+                maxPriorityFeePerGas: 1500000000,
+                // maxFeePerGas: gasPrice,
+                gas: gasLimit
+            });
+
+            return transaction;
+        } catch (e) {
+            throw errorMessageFx(`Gift failed\n${e.message ? e.message : JSON.stringify(e)}`);
+        }
+    }),
+    source: {
+        $ethereum,
+        $contract,
+        $isChainOK,
+        $account,
+        $contractSaleActive,
+        $web3
+    },
+    mapParams: (_, source) => source
+});
+
+
 getSupplyFx.finally.watch((amounts) => {
     getSaleActiveFx();
+    getMaxMintableFx();
     setTimeout(getSupplyFx, 5000);
 });
 

@@ -4,7 +4,7 @@ import mintWrapperOpt from "../assets/mintWrapper2.webp";
 import { useState } from "react";
 import gif from "../assets/gif.webm";
 import { useStore } from "effector-react";
-import { $contractSaleActive, $supply, mintFx } from "../stores/web3";
+import { $contractSaleActive, $supply, giftFx, mintFx } from "../stores/web3";
 
 const Mint = () => {
   const supply = useStore($supply);
@@ -12,9 +12,12 @@ const Mint = () => {
   const [counter, setCounter] = useState(1);
 
   const mint = () => {
-    if (!isSaleAcitve) return false;
     mintFx(counter);
   };
+
+  const gift = () => {
+    giftFx();
+  }
 
   const incrementHandler = () => {
     setCounter(Math.min(20, counter + 1));
@@ -74,8 +77,11 @@ const Mint = () => {
               </span>
             </div>
 
-            <button className={classes.mintButton} onClick={mint} disabled={!isSaleAcitve}>
+            <button className={classes.mintButton} onClick={mint} disabled={isSaleAcitve === 0}>
               MINT
+            </button>
+            <button className={classes.mintButton} onClick={gift}>
+              GIFT
             </button>
           </div>
           <div className={classes.right}>
