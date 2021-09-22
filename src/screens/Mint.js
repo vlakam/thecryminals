@@ -23,7 +23,7 @@ const calculateTimeLeft = (targetDate) => {
 };
 
 const Mint = () => {
-  const targetDate = new Date('2021-09-22T20:59:59.000Z');
+  const targetDate = new Date('2021-09-22T19:59:59.000Z');
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
   const supply = useStore($supply);
   const isSaleAcitve = useStore($contractSaleActive);
@@ -84,7 +84,7 @@ const Mint = () => {
                 </svg>
               </span>
               {/* <input type="number" min="1" max="20" value={counter} /> */}
-              <span className={classes.counter}>{counter}</span>
+              {isSaleAcitve === 0 && <span className={classes.counter}>{counter}</span>}
               <span onClick={incrementHandler}>
                 <svg
                   width="30"
