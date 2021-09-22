@@ -8,22 +8,24 @@ import { $contractSaleActive, $supply, giftFx, mintFx } from "../stores/web3";
 
 const calculateTimeLeft = (targetDate) => {
   const difference = +targetDate - +new Date();
-  const padNumber = (num) => num.toString().padStart(2, '0');
+  const padNumber = (num) => num.toString().padStart(2, "0");
 
   if (difference > 0) {
-      let days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      let hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-      let minutes = Math.floor((difference / 1000 / 60) % 60);
-      let seconds = Math.floor((difference / 1000) % 60);
+    let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+    let minutes = Math.floor((difference / 1000 / 60) % 60);
+    let seconds = Math.floor((difference / 1000) % 60);
 
-      return `${padNumber(days)}d:${padNumber(hours)}h:${padNumber(minutes)}m:${padNumber(seconds)}s`;
+    return `${padNumber(days)}d:${padNumber(hours)}h:${padNumber(
+      minutes
+    )}m:${padNumber(seconds)}s`;
   }
-  
-  return 'Starting soon';
+
+  return "Starting soon";
 };
 
 const Mint = () => {
-  const targetDate = new Date('2021-09-22T19:59:59.000Z');
+  const targetDate = new Date("2021-09-22T19:59:59.000Z");
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
   const supply = useStore($supply);
   const isSaleAcitve = useStore($contractSaleActive);
@@ -40,7 +42,7 @@ const Mint = () => {
   };
 
   const incrementHandler = () => {
-    setCounter(Math.min(20, counter + 1));
+    setCounter(Math.min(15, counter + 1));
   };
 
   const decrementHandler = () => {
@@ -51,7 +53,7 @@ const Mint = () => {
     setTimeout(() => {
       setTimeLeft(calculateTimeLeft(targetDate));
     }, 1000);
-  }, [timeLeft])
+  }, [timeLeft]);
 
   return (
     <main>
@@ -84,7 +86,9 @@ const Mint = () => {
                 </svg>
               </span>
               {/* <input type="number" min="1" max="20" value={counter} /> */}
-              {isSaleAcitve === 0 && <span className={classes.counter}>{counter}</span>}
+              {isSaleAcitve === 0 && (
+                <span className={classes.counter}>{counter}</span>
+              )}
               <span onClick={incrementHandler}>
                 <svg
                   width="30"
@@ -104,7 +108,11 @@ const Mint = () => {
               </span>
             </div>
             <div className={classes.btnGroup}>
-              <button className={classes.mintButton} onClick={gift} disabled={isSaleAcitve === 0 || isGiftPending}>
+              <button
+                className={classes.mintButton}
+                onClick={gift}
+                disabled={isSaleAcitve === 0 || isGiftPending}
+              >
                 CLAIM
               </button>
               <button
@@ -121,7 +129,7 @@ const Mint = () => {
               <source src={gif} type="video/webm" />
             </video>
             <div>
-              <p className={classes.desc}>MAX LIMIT PER TRANSACTION: 20</p>
+              <p className={classes.desc}>MAX LIMIT PER TRANSACTION: 15</p>
               <p className={classes.desc}>PRICE: 0.05 ETH</p>
               <p className={classes.desc}>
                 MINTED: {supply.total}/{supply.max}
