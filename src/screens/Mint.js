@@ -65,7 +65,7 @@ const Mint = () => {
         </picture>
         <div className={classes.content}>
           <div className={classes.left}>
-            <div className={classes.timer}>{timeLeft}</div>
+            {isSaleAcitve === 0 && (<div className={classes.timer}>{timeLeft}</div>)}
             <h3>AMOUNT OF CRYMINALS</h3>
             <div className={classes.counterbox}>
               <span onClick={decrementHandler}>
@@ -86,9 +86,7 @@ const Mint = () => {
                 </svg>
               </span>
               {/* <input type="number" min="1" max="20" value={counter} /> */}
-              {isSaleAcitve === 0 && (
-                <span className={classes.counter}>{counter}</span>
-              )}
+              <span className={classes.counter}>{counter}</span>
               <span onClick={incrementHandler}>
                 <svg
                   width="30"
