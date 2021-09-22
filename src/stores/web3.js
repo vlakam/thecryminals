@@ -153,7 +153,7 @@ const getSupplyFx = attach({
 
 export const $contractSaleActive = restore(getSaleActiveFx.doneData, 0);
 export const $supply = restore(getSupplyFx.doneData, { total: 0, max: 10000 });
-export const $maxMintable = createStore(1);
+
 
 const getMaxMintableFx = attach({
     effect: createEffect(async ({ $account, $contract }) => {
@@ -163,7 +163,9 @@ const getMaxMintableFx = attach({
         const minted = parseInt(await $contract.methods.balanceOf($account).call());
 
         if (saleStatus === 1) {
-            const canPresale = await $contract.methods.checkPresale().call();
+            const canPresale = await $contract.methods.checkPresale().call({
+                from: $account
+            });
             if (!canPresale) return 0;
             return Math.max(15 - minted, 0);
         }
@@ -172,7 +174,7 @@ const getMaxMintableFx = attach({
     source: { $contract, $account },
     mapParams: (_, a) => a,
 });
-
+export const $maxMintable = restore(getMaxMintableFx.doneData, 0);
 export const mintFx = attach({
     effect: createEffect(async ({
         $ethereum,
@@ -190,11 +192,21 @@ export const mintFx = attach({
         if (!$account) throw errorMessageFx("Press connect button");
         if ($contractSaleActive === 0)
             throw errorMessageFx("This sale is not active yet");
+        if ($contractSaleActive === 1) {
+            try {
+                const canPresale = await $contract.methods.checkPresale().call({
+                    from: $account
+                });
+                if (!canPresale) throw errorMessageFx('You are not allowed into the presale');
+            } catch (e) {
+                throw errorMessageFx('You are not allowed into the presale');
+            }
+        }
         if (amount > $maxMintable)
             throw errorMessageFx(`Not able to mint above your limit: ${$maxMintable}`);
 
         try {
-            const tokenPrice = Web3.utils.toWei(0.05, 'ether');
+            const tokenPrice = Web3.utils.toWei("0.05", 'ether');
             const gasPrice = await $web3.eth.getGasPrice();
             let gasLimit;
             try {
@@ -207,7 +219,7 @@ export const mintFx = attach({
             }
             console.log(gasPrice, gasLimit);
 
-            const transaction = await $contract.methods.mintAngelsOfAether (amount).send({
+            const transaction = await $contract.methods.mint(amount).send({
                 from: $account,
                 value: tokenPrice * amount,
                 maxPriorityFeePerGas: 1500000000,
@@ -244,9 +256,13 @@ export const giftFx = attach({
         if (!$contract) throw errorMessageFx("Failed to initialize contract");
         if (!$isChainOK) throw errorMessageFx("You are on the wrong chain");
         if (!$account) throw errorMessageFx("Press connect button");
+        if ($contractSaleActive === 0)
+            throw errorMessageFx("This sale is not active yet");
 
         try {
-            const canGift = await $contract.methods.checkGift().call();
+            const canGift = await $contract.methods.checkGift().call({
+                from: $account
+            });
             if (!canGift) return errorMessageFx('You are not allowed to use Gift');
             const gasPrice = await $web3.eth.getGasPrice();
             let gasLimit;
