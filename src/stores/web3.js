@@ -197,7 +197,7 @@ export const mintFx = attach({
                 const canPresale = await $contract.methods.checkPresale().call({
                     from: $account
                 });
-                if (!canPresale) throw errorMessageFx('You are not allowed into the presale');
+                if (!canPresale) return errorMessageFx('You are not allowed into the presale');
             } catch (e) {
                 throw errorMessageFx('You are not allowed into the presale');
             }
