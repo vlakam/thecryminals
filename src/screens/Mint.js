@@ -25,7 +25,7 @@ const calculateTimeLeft = (targetDate) => {
 };
 
 const Mint = () => {
-  const targetDate = new Date("2021-09-29T22:59:59.000Z");
+  const targetDate = new Date("2021-09-29T19:59:59.000Z");
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
   const supply = useStore($supply);
   const isSaleAcitve = useStore($contractSaleActive);
@@ -42,7 +42,7 @@ const Mint = () => {
   };
 
   const incrementHandler = () => {
-    setCounter(Math.min(15, counter + 1));
+    setCounter(Math.min(20, counter + 1));
   };
 
   const decrementHandler = () => {
@@ -65,7 +65,9 @@ const Mint = () => {
         </picture>
         <div className={classes.content}>
           <div className={classes.left}>
-            {isSaleAcitve === 0 && (<div className={classes.timer}>{timeLeft}</div>)}
+            {isSaleAcitve === 0 && (
+              <div className={classes.timer}>{timeLeft}</div>
+            )}
             <h3>AMOUNT OF CRYMINALS</h3>
             <div className={classes.counterbox}>
               <span onClick={decrementHandler}>
@@ -111,7 +113,7 @@ const Mint = () => {
                 onClick={gift}
                 disabled={isSaleAcitve === 0 || isGiftPending}
               >
-                CLAIM
+                GIFT
               </button>
               <button
                 className={classes.mintButton}
@@ -127,7 +129,7 @@ const Mint = () => {
               <source src={gif} type="video/webm" />
             </video>
             <div>
-              <p className={classes.desc}>MAX LIMIT PER TRANSACTION: 15</p>
+              <p className={classes.desc}>MAX LIMIT PER TRANSACTION: 20</p>
               <p className={classes.desc}>PRICE: 0.05 ETH</p>
               <p className={classes.desc}>
                 MINTED: {supply.total}/{supply.max}
