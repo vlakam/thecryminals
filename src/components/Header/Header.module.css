@@ -51,10 +51,14 @@ header > a {
 }
 
 @media (max-width: 576px) {
+  .headwrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   header .connect {
     display: none;
   }
   .connect {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 }

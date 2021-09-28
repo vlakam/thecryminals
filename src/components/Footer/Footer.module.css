@@ -1,13 +1,15 @@
 footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 50px 0;
   max-width: 1200px;
   margin: 0 auto;
   margin-top: 100px;
 }
-footer > img {
+footer > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+footer > div > img {
   max-width: 225px;
 }
 .rights {
@@ -26,6 +28,12 @@ footer > img {
   left: 0;
   max-width: 100%;
 }
+.mint > div {
+  justify-content: center;
+}
+.contract {
+  text-align: center;
+}
 @media (max-width: 1199px) {
   footer {
     margin-top: 30px;
@@ -43,16 +51,25 @@ footer > img {
 }
 
 @media (max-width: 735px) {
-  footer > img {
+  footer > div > img {
     display: none;
+  }
+  .contract {
+    font-size: 13px;
   }
 }
 
 @media (max-width: 576px) {
-  footer > img {
+  footer > div > img {
     display: none;
   }
   .rights {
     font-size: 12px;
+  }
+  .contract {
+    display: none;
+  }
+  .mint {
+    padding: 5px;
   }
 }

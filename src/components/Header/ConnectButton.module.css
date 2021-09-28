@@ -22,4 +22,7 @@
   .connect {
     margin-top: 30px;
   }
+  header .connect {
+    margin-top: 5px;
+  }
 }

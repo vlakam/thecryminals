@@ -8,16 +8,24 @@ const Footer = (params) => {
   return (
     <>
       <footer className={params.mint ? classes.mint : null}>
-        {!params.mint && <img src={logo} />}
-        {!params.mint && (
-          <p className={classes.rights}>
-            ALL RIGHTS RESERVED
-            <br />
-            2021
-          </p>
-        )}
+        <div>
+          {!params.mint && <img src={logo} />}
+          {!params.mint && (
+            <p className={classes.rights}>
+              ALL RIGHTS RESERVED
+              <br />
+              2021
+            </p>
+          )}
 
-        <Socials />
+          <Socials />
+        </div>
+        <p className={classes.contract}>
+          Verified OpenSea contract:{" "}
+          <a href="https://etherscan.io/address/0x17668c2718d498dd95693d384e70aea184c6325c">
+            0x17668c2718d498dd95693d384e70aea184c6325c
+          </a>
+        </p>
       </footer>
     </>
   );
