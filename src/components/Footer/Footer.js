@@ -20,12 +20,12 @@ const Footer = (params) => {
 
           <Socials />
         </div>
-        <p className={classes.contract}>
+        {/* <p className={classes.contract}>
           Verified OpenSea contract:{" "}
           <a href="https://etherscan.io/address/0x17668c2718d498dd95693d384e70aea184c6325c">
             0x17668c2718d498dd95693d384e70aea184c6325c
           </a>
-        </p>
+        </p> */}
       </footer>
     </>
   );
