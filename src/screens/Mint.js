@@ -65,7 +65,7 @@ const Mint = () => {
         </picture>
         <div className={classes.content}>
           <div className={classes.left}>
-            {isSaleAcitve === 0 && (
+            {isSaleAcitve !== 2 && (
               <div className={classes.timer}>{timeLeft}</div>
             )}
             <h3>AMOUNT OF CRYMINALS</h3>
