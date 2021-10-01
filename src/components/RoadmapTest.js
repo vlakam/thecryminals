@@ -22,8 +22,147 @@ import roadShare from "../assets/roadShare.png";
 import roadShareOpt from "../assets/roadShare.webp";
 import classes from "./Roadmap.module.css";
 import Chain from "./UI/Chain";
+import ProgressBar from "./ProgressBar";
+
+import { useEffect, useState } from "react";
+import { $contractSaleActive, $supply, giftFx, mintFx } from "../stores/web3";
+import { useStore } from "effector-react";
 
 const Roadmap = () => {
+  const supply = useStore($supply);
+  // const supply = { total: 1473 };
+  const testData = [
+    {
+      text: "Heist #1\n5 random NFTs",
+      bgcolor: (supply.total / 1000) * 100 >= 100 ? "#00FF29" : "#ffa800",
+      completed:
+        (supply.total / 1000) * 100 >= 100
+          ? 100
+          : ((supply.total / 1000) * 100).toFixed(2),
+      max:
+        (supply.total / 1000) * 100 >= 100
+          ? "Completed"
+          : `${supply.total}/1000`,
+      maxColor: (supply.total / 1000) * 100 >= 100 ? "#00FF29" : "#fff",
+    },
+    {
+      text: "Heist #2\n0N1 Force NFT",
+      bgcolor: (supply.total / 2000) * 100 >= 100 ? "#00FF29" : "#ffa800",
+      completed:
+        (supply.total / 2000) * 100 >= 100
+          ? 100
+          : ((supply.total / 2000) * 100).toFixed(2),
+      max:
+        (supply.total / 2000) * 100 >= 100
+          ? "Completed"
+          : `${supply.total}/2000`,
+      maxColor: (supply.total / 2000) * 100 >= 100 ? "#00FF29" : "#fff",
+    },
+    {
+      text: "Heist #3\nFVCK_CRYSTAL// NFT",
+      bgcolor: (supply.total / 3000) * 100 >= 100 ? "#00FF29" : "#ffa800",
+      completed:
+        (supply.total / 3000) * 100 >= 100
+          ? 100
+          : ((supply.total / 3000) * 100).toFixed(2),
+      max:
+        (supply.total / 3000) * 100 >= 100
+          ? "Completed"
+          : `${supply.total}/3000`,
+      maxColor: (supply.total / 3000) * 100 >= 100 ? "#00FF29" : "#fff",
+    },
+    {
+      text: "Heist #4\nPudgy Penguins NFT",
+      bgcolor: (supply.total / 4000) * 100 >= 100 ? "#00FF29" : "#ffa800",
+      completed:
+        (supply.total / 4000) * 100 >= 100
+          ? 100
+          : ((supply.total / 4000) * 100).toFixed(2),
+      max:
+        (supply.total / 4000) * 100 >= 100
+          ? "Completed"
+          : `${supply.total}/4000`,
+      maxColor: (supply.total / 4000) * 100 >= 100 ? "#00FF29" : "#fff",
+    },
+    {
+      text: "Heist #5\nBAKC NFT",
+      bgcolor: (supply.total / 5000) * 100 >= 100 ? "#00FF29" : "#ffa800",
+      completed:
+        (supply.total / 5000) * 100 >= 100
+          ? 100
+          : ((supply.total / 5000) * 100).toFixed(2),
+      max:
+        (supply.total / 5000) * 100 >= 100
+          ? "Completed"
+          : `${supply.total}/5000`,
+      maxColor: (supply.total / 5000) * 100 >= 100 ? "#00FF29" : "#fff",
+    },
+    {
+      text: "Heist #6\nCool Cats NFT",
+      bgcolor: (supply.total / 6000) * 100 >= 100 ? "#00FF29" : "#ffa800",
+      completed:
+        (supply.total / 6000) * 100 >= 100
+          ? 100
+          : ((supply.total / 6000) * 100).toFixed(2),
+      max:
+        (supply.total / 6000) * 100 >= 100
+          ? "Completed"
+          : `${supply.total}/6000`,
+      maxColor: (supply.total / 6000) * 100 >= 100 ? "#00FF29" : "#fff",
+    },
+    {
+      text: "Heist #7\nMAYC NFT",
+      bgcolor: (supply.total / 7000) * 100 >= 100 ? "#00FF29" : "#ffa800",
+      completed:
+        (supply.total / 7000) * 100 >= 100
+          ? 100
+          : ((supply.total / 7000) * 100).toFixed(2),
+      max:
+        (supply.total / 7000) * 100 >= 100
+          ? "Completed"
+          : `${supply.total}/7000`,
+      maxColor: (supply.total / 7000) * 100 >= 100 ? "#00FF29" : "#fff",
+    },
+    {
+      text: "Heist #8\nMeebits NFT",
+      bgcolor: (supply.total / 8000) * 100 >= 100 ? "#00FF29" : "#ffa800",
+      completed:
+        (supply.total / 8000) * 100 >= 100
+          ? 100
+          : ((supply.total / 8000) * 100).toFixed(2),
+      max:
+        (supply.total / 8000) * 100 >= 100
+          ? "Completed"
+          : `${supply.total}/8000`,
+      maxColor: (supply.total / 8000) * 100 >= 100 ? "#00FF29" : "#fff",
+    },
+    {
+      text: "Heist #9\nGutter Cats NFT",
+      bgcolor: (supply.total / 9000) * 100 >= 100 ? "#00FF29" : "#ffa800",
+      completed:
+        (supply.total / 9000) * 100 >= 100
+          ? 100
+          : ((supply.total / 9000) * 100).toFixed(2),
+      max:
+        (supply.total / 9000) * 100 >= 100
+          ? "Completed"
+          : `${supply.total}/9000`,
+      maxColor: (supply.total / 9000) * 100 >= 100 ? "#00FF29" : "#fff",
+    },
+    {
+      text: "Heist #10\nBAYC NFT",
+      bgcolor: (supply.total / 10000) * 100 >= 100 ? "#00FF29" : "#ffa800",
+      completed:
+        (supply.total / 10000) * 100 >= 100
+          ? 100
+          : ((supply.total / 10000) * 100).toFixed(2),
+      max:
+        (supply.total / 10000) * 100 >= 100
+          ? "Completed"
+          : `${supply.total}/10000`,
+      maxColor: (supply.total / 10000) * 100 >= 100 ? "#00FF29" : "#fff",
+    },
+  ];
   return (
     <section id="roadmap">
       <h2>AVAILABLE LOOT TO BE SHARED</h2>
@@ -215,6 +354,19 @@ const Roadmap = () => {
           The final mission and the wildest theft ever committed as a 10k Gang -
           a Bored Ape Yacht Club NFT!
         </p>
+      </div>
+      <h2>HEISTS IN PROGRESS</h2>
+      <div className={classes.heists}>
+        {testData.map((item, idx) => (
+          <ProgressBar
+            key={idx}
+            bgcolor={item.bgcolor}
+            completed={item.completed}
+            text={item.text}
+            max={item.max}
+            maxColor={item.maxColor}
+          />
+        ))}
       </div>
       <h2>
         NOW THE LOOT IS SHARED...

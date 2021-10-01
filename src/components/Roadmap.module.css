@@ -63,6 +63,9 @@ h2 {
   font-family: "What";
   font-weight: 100;
 }
+.heists {
+  margin-bottom: 132px;
+}
 
 @media (max-width: 911px) {
   .roadmapBox {

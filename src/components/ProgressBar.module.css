@@ -1,0 +1,51 @@
+.containerStyles {
+  height: 40px;
+  width: 100%;
+  background-color: #e0e0de;
+  border-radius: 50px;
+  margin: 50px 10px;
+  max-width: 710px;
+}
+
+.labelStyles {
+  padding: 5px;
+  color: "white";
+  font-weight: "bold";
+}
+.barbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.text {
+  width: 192px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+.completedUp {
+  display: none;
+}
+
+@media (max-width: 911px) {
+  .containerStyles {
+    max-width: 410px;
+  }
+}
+@media (max-width: 768px) {
+  .barbox {
+    flex-direction: column;
+  }
+  .containerStyles {
+    max-width: 100%;
+  }
+  .completedDown {
+    display: none;
+  }
+  .completedUp {
+    display: block;
+  }
+  .text {
+    width: 100%;
+  }
+}
