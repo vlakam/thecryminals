@@ -2,7 +2,6 @@ import {
     createStore,
     createEffect,
     sample,
-    forward,
     restore,
     attach,
 } from "effector";
@@ -57,7 +56,7 @@ detectMetamaskFx();
 export const $ethereum = restore(detectMetamaskFx.doneData, null);
 export const connectAccountFx = attach({
     effect: createEffect(async (ethereum) => {
-        if (!ethereum) throw errorMessageFx("Install metamask");
+        if (!ethereum) throw errorMessageFx("Non-Ethereum browser detected. You should consider trying MetaMask!");
         const account = await ethereum.request({ method: "eth_requestAccounts" });
         return account;
     }),
@@ -140,11 +139,27 @@ const getSaleActiveFx = attach({
     mapParams: (_, contract) => contract,
 });
 
+const getSupplyFromEtherscan = async () => {
+    const resp = await fetch(`https://api.etherscan.io/api?module=stats&action=tokensupply&contractaddress=${address}`);
+    if (!resp.ok) throw 'Failed to get from etherscan';
+    const json = await resp.json();
+    if (json.status === '0') throw 'Failed to get from etherscan';
+
+    return parseInt(json.result);
+}
+
 const getSupplyFx = attach({
     effect: createEffect(async ($contract) => {
-        if (!$contract) return { max: 10000, total: 0 };
-        const total = parseInt(await $contract.methods.totalSupply().call());
         const max = 10000;
+        if (!$contract) {
+            try {
+                const total = await getSupplyFromEtherscan();
+                return { max, total };
+            } catch (e) {}
+
+            return { max, total: 0 };
+        }
+        const total = parseInt(await $contract.methods.totalSupply().call());
         return { total, max };
     }),
     source: $contract,
@@ -162,14 +177,7 @@ const getMaxMintableFx = attach({
         if (saleStatus === 0) return 20;
         const minted = parseInt(await $contract.methods.balanceOf($account).call());
 
-        if (saleStatus === 1) {
-            const canPresale = await $contract.methods.checkPresale().call({
-                from: $account
-            });
-            if (!canPresale) return 0;
-            return Math.max(15 - minted, 0);
-        }
-        else return Math.max(20 - minted, 0);
+        return Math.max(20 - minted, 0);
     }),
     source: { $contract, $account },
     mapParams: (_, a) => a,
@@ -186,22 +194,12 @@ export const mintFx = attach({
         $maxMintable,
         $web3
     }) => {
-        if (!$ethereum) throw errorMessageFx("Install metamask");
+        if (!$ethereum) throw errorMessageFx("Non-Ethereum browser detected. You should consider trying MetaMask!");
         if (!$contract) throw errorMessageFx("Failed to initialize contract");
         if (!$isChainOK) throw errorMessageFx("You are on the wrong chain");
         if (!$account) throw errorMessageFx("Press connect button");
         if ($contractSaleActive === 0)
             throw errorMessageFx("This sale is not active yet");
-        if ($contractSaleActive === 1) {
-            try {
-                const canPresale = await $contract.methods.checkPresale().call({
-                    from: $account
-                });
-                if (!canPresale) return errorMessageFx('You are not allowed into the presale');
-            } catch (e) {
-                throw errorMessageFx('You are not allowed into the presale');
-            }
-        }
         if (amount > $maxMintable)
             throw errorMessageFx(`Not able to mint above your limit: ${$maxMintable}`);
 
@@ -217,17 +215,32 @@ export const mintFx = attach({
             } catch (e) {
                 gasLimit = 250000 * amount;
             }
+
             console.log(gasPrice, gasLimit);
 
-            const transaction = await $contract.methods.mint(amount).send({
+            try {
+                return await $contract.methods.mint(amount).send({
+                    from: $account,
+                    value: tokenPrice * amount,
+                    maxPriorityFeePerGas: 1500000000,
+                    // maxFeePerGas: gasPrice,
+                    gas: gasLimit,
+                });
+            } catch (e) {
+                if (e.message && e.message.includes('current network does not support EIP-1559')) {
+                    console.log('Mint failed because of EIP-1559. Sending as type 0 now.');
+                } else {
+                    throw e;
+                }
+            }
+
+            return await $contract.methods.mint(amount).send({
                 from: $account,
                 value: tokenPrice * amount,
-                maxPriorityFeePerGas: 1500000000,
                 // maxFeePerGas: gasPrice,
-                gas: gasLimit
+                gas: gasLimit,
+                type: '0x0',
             });
-
-            return transaction;
         } catch (e) {
             throw errorMessageFx(`Mint failed\n${e.message ? e.message : JSON.stringify(e)}`);
         }
@@ -252,7 +265,7 @@ export const giftFx = attach({
         $account,
         $web3
     }) => {
-        if (!$ethereum) throw errorMessageFx("Install metamask");
+        if (!$ethereum) throw errorMessageFx("Non-Ethereum browser detected. You should consider trying MetaMask!");
         if (!$contract) throw errorMessageFx("Failed to initialize contract");
         if (!$isChainOK) throw errorMessageFx("You are on the wrong chain");
         if (!$account) throw errorMessageFx("Press connect button");
@@ -276,15 +289,29 @@ export const giftFx = attach({
             }
             console.log(gasPrice, gasLimit);
 
-            const transaction = await $contract.methods.gift().send({
+            try {
+                return await $contract.methods.gift().send({
+                    from: $account,
+                    value: 0,
+                    maxPriorityFeePerGas: 1500000000,
+                    // maxFeePerGas: gasPrice,
+                    gas: gasLimit
+                });
+            } catch (e) {
+                if (e.message && e.message.includes('current network does not support EIP-1559')) {
+                    console.log('Mint failed because of EIP-1559. Sending as type 0 now.');
+                } else {
+                    throw e;
+                }
+            }
+
+            return await $contract.methods.gift().send({
                 from: $account,
                 value: 0,
-                maxPriorityFeePerGas: 1500000000,
                 // maxFeePerGas: gasPrice,
-                gas: gasLimit
+                gas: gasLimit,
+                type: '0x0',
             });
-
-            return transaction;
         } catch (e) {
             throw errorMessageFx(`Gift failed\n${e.message ? e.message : JSON.stringify(e)}`);
         }
@@ -304,11 +331,7 @@ export const giftFx = attach({
 getSupplyFx.finally.watch((amounts) => {
     getSaleActiveFx();
     getMaxMintableFx();
-    setTimeout(getSupplyFx, 5000);
+    setTimeout(getSupplyFx, 10000);
 });
 
-forward({
-    from: $contract,
-    to: [getSupplyFx],
-});
-
+getSupplyFx();
