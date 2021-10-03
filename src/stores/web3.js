@@ -152,12 +152,8 @@ const getSupplyFx = attach({
     effect: createEffect(async ($contract) => {
         const max = 10000;
         if (!$contract) {
-            try {
-                const total = await getSupplyFromEtherscan();
-                return { max, total };
-            } catch (e) {}
-
-            return { max, total: 0 };
+            const total = await getSupplyFromEtherscan();
+            return { max, total };
         }
         const total = parseInt(await $contract.methods.totalSupply().call());
         return { total, max };
