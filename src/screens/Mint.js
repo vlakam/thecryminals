@@ -65,9 +65,9 @@ const Mint = () => {
         </picture>
         <div className={classes.content}>
           <div className={classes.left}>
-            {isSaleAcitve !== 2 && (
+            {/* {isSaleAcitve !== 2 && (
               <div className={classes.timer}>{timeLeft}</div>
-            )}
+            )} */}
             <h3>AMOUNT OF CRYMINALS</h3>
             <div className={classes.counterbox}>
               <span onClick={decrementHandler}>
@@ -131,9 +131,9 @@ const Mint = () => {
             <div>
               <p className={classes.desc}>MAX LIMIT PER TRANSACTION: 20</p>
               <p className={classes.desc}>PRICE: 0.05 ETH</p>
-              <p className={classes.desc}>
+              {supply.total !== 0 && <p className={classes.desc}>
                 MINTED: {supply.total}/{supply.max}
-              </p>
+              </p>}
             </div>
           </div>
         </div>
