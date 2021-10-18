@@ -1,20 +1,20 @@
 .chain {
-  margin-top: 200px;
-  margin-bottom: 200px;
+  margin-top: 0px;
+  margin-bottom: 50px;
   object-fit: fill;
   width: 100%;
 }
 
 @media (max-width: 911px) {
   .chain {
-    margin-top: 70px;
-    margin-bottom: 70px;
+    margin-top: 0px;
+    margin-bottom: 20px;
   }
 }
 
 @media (max-width: 576px) {
   .chain {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 0px;
+    margin-bottom: 15px;
   }
 }

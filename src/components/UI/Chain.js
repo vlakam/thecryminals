@@ -1,5 +1,5 @@
-import chain from "../../assets/chain.png";
-import chainOpt from "../../assets/chain.webp";
+import chain from "../../assets/chain-min.png";
+import chainOpt from "../../assets/chain-min.webp";
 import classes from "./Chain.module.css";
 const Chain = () => {
   return (
