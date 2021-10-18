@@ -22,7 +22,7 @@ const Preview = () => {
         </div>
       </div>
       <Wrapper>
-        <h2 className={classes.openTitle}>
+        {/* <h2 className={classes.openTitle}>
           THE CRYMINALS ARE GOING ON A HEIST!
         </h2>
         <p className={[classes.open, classes.open1].join(" ")}>
@@ -39,7 +39,7 @@ const Preview = () => {
             The Cryminals
           </a>{" "}
           and get your share of the loot!
-        </p>
+        </p> */}
         <Chain />
       </Wrapper>
     </>
