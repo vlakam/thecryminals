@@ -14,6 +14,8 @@ import wanted from "../assets/wanted.png";
 import wantedOpt from "../assets/wanted.webp";
 import final from "../assets/final.mp4";
 import finalOpt from "../assets/final.webm";
+import bigLogo from "../assets/asd.png";
+import bigLogoOpt from "../assets/asd.webp";
 const Team = () => {
   return (
     <section id="team">
@@ -28,16 +30,14 @@ const Team = () => {
             </ul> */}
       <div className={classes.team}>
         <picture>
-          <source srcSet={finalOpt} type="video/webm" />
+          {/* <source srcSet={finalOpt} type="video/webm" />
           <source srcSet={final} type="video/mp4" />
-          {/* <img
-            src={wanted}
-            className={classes.teamPreview}
-            alt="team preview"
-          /> */}
           <video loop muted autoPlay playsInline>
             <source src={final} type="video/webm" />
-          </video>
+          </video> */}
+          <source srcSet={bigLogoOpt} type="image/webp" />
+          <source srcSet={bigLogo} type="image/png" />
+          <img src={bigLogo} alt="bigLogo" />
         </picture>
         <ul className={classes.grid}>
           <li className={classes.flex}>

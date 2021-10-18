@@ -20,27 +20,25 @@ const About = () => {
       <h1>Welcome to the gang!</h1>
       <div className={classes.gifbox}>
         <p>
-          <p className={classes.price}>0,05 ETH EACH!</p>
-          Art is not for everybody? Art = commerce? Art is life? How far would
-          YOU go to become a part of it?
+          <p className={classes.price}>0,025 ETH EACH!</p>
+          Metacity is never going to be the same. The Apocalypse has wiped all
+          the Cryminals out of existence. The virtual streets remained
+          suspiciously quiet, and there was no more chaos and violence going on.
+          But it was not until the end of October - the time when humans
+          celebrate the All Saints’ Day…
           <br />
           <br />
-          Our main hero, Spike, has become the superior criminal among two most
-          dangerous gangs of Metacity - Nomads and Gangsters! But,
-          unfortunately, there are so few heroes like him...
-          <br />
-          Therefore we need YOUR help!
-          <br />
-          <br />
-          Look, it’s simple as that - you cooperate with us, and we reward you
-          with valuable and unique pieces of art!
+          The reckless army of bloodthirsty undead will rise up in the real
+          life. These greedy bastards will take swing at some really expensive
+          items and pieces of art on the Earth. And nothing is going to stop
+          them…
           <br />
           <br />
-          LET'S MAKE ART A COMMON HERITAGE AGAIN!
+          This night will go down in the history of humanity as the time when
+          the real and the virtual worlds collided!
           <br />
           <br />
-          Are you ready to join The Gang? Then keep your weapons up! The
-          Cryminals are coming...
+          The bloody revenge is coming…
         </p>
         {/* <img src={gif} /> */}
         <video loop muted autoPlay playsInline>
@@ -65,7 +63,7 @@ const About = () => {
         </li>
       </ol>
 
-      <h2 className={classes.title}>THE EXTRAS</h2>
+      {/* <h2 className={classes.title}>THE EXTRAS</h2>
       <p>
         The collection will also include few ultrarare characters! Here is a
         little hint to let you imagine how they will look like :)
@@ -96,7 +94,7 @@ const About = () => {
           <source srcSet={extra5} type="image/png" />
           <img src={extra5} alt="extra5" />
         </picture>
-      </div>
+      </div> */}
       <Chain />
     </section>
   );

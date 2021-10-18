@@ -1,6 +1,6 @@
 .roadmapBox {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-column-gap: 138px;
   grid-row-gap: 72px;
   margin-top: 92px;
@@ -10,6 +10,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.roadmapBoxItem picture {
+  width: 100%;
+}
+.accent {
+  color: #ffa800;
 }
 .roadmapBoxItem img {
   width: 100%;

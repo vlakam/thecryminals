@@ -1,25 +1,42 @@
-import road1 from "../assets/road1.png";
-import road2 from "../assets/road2.png";
-import road3 from "../assets/road3.png";
-import road4 from "../assets/road4.png";
-import road5 from "../assets/road5.png";
-import road6 from "../assets/road6.png";
-import road7 from "../assets/road7.png";
-import road8 from "../assets/road8.png";
-import road9 from "../assets/road9.png";
-import road10 from "../assets/road10.png";
-import road1Opt from "../assets/road1.webp";
-import road2Opt from "../assets/road2.webp";
-import road3Opt from "../assets/road3.webp";
-import road4Opt from "../assets/road4.webp";
-import road5Opt from "../assets/road5.webp";
-import road6Opt from "../assets/road6.webp";
-import road7Opt from "../assets/road7.webp";
-import road8Opt from "../assets/road8.webp";
-import road9Opt from "../assets/road9.webp";
-import road10Opt from "../assets/road10.webp";
-import roadShare from "../assets/roadShare.png";
-import roadShareOpt from "../assets/roadShare.webp";
+// import road1 from "../assets/road1new.png";
+// import road2 from "../assets/road2new.png";
+// import road3 from "../assets/road3new.png";
+// import road4 from "../assets/road4new.png";
+// import road5 from "../assets/road5new.png";
+// import road6 from "../assets/road6new.png";
+// import road7 from "../assets/road7new.png";
+// import road8 from "../assets/road8new.png";
+// import road9 from "../assets/road9new.png";
+// import road10 from "../assets/road10new.png";
+// import road1Opt from "../assets/road1new.webp";
+// import road2Opt from "../assets/road2new.webp";
+// import road3Opt from "../assets/road3new.webp";
+// import road4Opt from "../assets/road4new.webp";
+// import road5Opt from "../assets/road5new.webp";
+// import road6Opt from "../assets/road6new.webp";
+// import road7Opt from "../assets/road7new.webp";
+// import road8Opt from "../assets/road8new.webp";
+// import road9Opt from "../assets/road9new.webp";
+// import road10Opt from "../assets/road10new.webp";
+// import roadShare from "../assets/roadSharenew.png";
+// import roadShareOpt from "../assets/roadSharenew.webp";
+import road1 from "../assets/roadmap1-min.png";
+import road2 from "../assets/roadmap2-min.png";
+import road3 from "../assets/roadmap3-min.png";
+import road4 from "../assets/roadmap4-min.png";
+import road5 from "../assets/roaddev1-min.png";
+import road6 from "../assets/roaddev2-min.png";
+import road7 from "../assets/roaddev3-min.png";
+import road8 from "../assets/roaddev4-min.png";
+import road1Opt from "../assets/roadmap1-min.webp";
+import road2Opt from "../assets/roadmap2-min.webp";
+import road3Opt from "../assets/roadmap3-min.webp";
+import road4Opt from "../assets/roadmap4-min.webp";
+import road5Opt from "../assets/roaddev1-min.webp";
+import road6Opt from "../assets/roaddev2-min.webp";
+import road7Opt from "../assets/roaddev3-min.webp";
+import road8Opt from "../assets/roaddev4-min.webp";
+
 import classes from "./Roadmap.module.css";
 import Chain from "./UI/Chain";
 import ProgressBar from "./ProgressBar";
@@ -166,23 +183,6 @@ const Roadmap = () => {
   return (
     <section id="roadmap">
       <h2>AVAILABLE LOOT TO BE SHARED</h2>
-      <p>
-        Pre-sale activities include tons of giveaways on our Twitter and
-        Discord, including art and meme contests. All winners will receive free
-        Cryminals one day before the official launch, which is set on September
-        21st.
-        <br />
-        <br />
-        Once minted a Cryminal, you become the member of The Gang and your funds
-        will be transferred to our Cryme Pool. It will be used for our
-        villainous and noble mission at the same time - bringing art back to
-        people!
-        <br />
-        <br />
-        Every 500 mints will be celebrated with $1000 giveaway, but much bigger
-        loot will be shared every 1000 mints! Let’s find out together what every
-        Cryminal has a chance to get!
-      </p>
       <div className={classes.roadmapBox}>
         <div className={classes.roadmapBoxItem}>
           <picture>
@@ -191,17 +191,10 @@ const Roadmap = () => {
             <img src={road1} alt="road1" />
           </picture>
           <p>
-            We will celebrate our first 1000 gangsters by giving away 5 random
-            trendy and valuable pieces of NFT art!
+            The epic heist series will start with a{" "}
+            <span className={classes.accent}>$25000 giveaway</span> as we get to
+            30%!
           </p>
-        </div>
-        <div className={classes.roadmapBoxItem}>
-          <picture>
-            <source srcSet={roadShareOpt} type="image/webp" />
-            <source srcSet={roadShare} type="image/png" />
-            <img src={roadShare} alt="roadShare" />
-          </picture>
-          <p>1500 mints - $1000 shared!</p>
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
@@ -210,17 +203,9 @@ const Roadmap = () => {
             <img src={road2} alt="road2" />
           </picture>
           <p>
-            As soon as our Gang hits 2000 members, we give away an 0N1 Force
-            NFT!
+            A brand new <span className={classes.accent}>Tesla Model S</span>{" "}
+            will be a 50% milestone of the reckless invasion!
           </p>
-        </div>
-        <div className={classes.roadmapBoxItem}>
-          <picture>
-            <source srcSet={roadShareOpt} type="image/webp" />
-            <source srcSet={roadShare} type="image/png" />
-            <img src={roadShare} alt="roadShare" />
-          </picture>
-          <p>2500 mints - $1000 shared!</p>
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
@@ -228,15 +213,11 @@ const Roadmap = () => {
             <source srcSet={road3} type="image/png" />
             <img src={road3} alt="road3" />
           </picture>
-          <p>3000 Cryminals on board? Here is a FVCK_CRYSTAL// NFT!</p>
-        </div>
-        <div className={classes.roadmapBoxItem}>
-          <picture>
-            <source srcSet={roadShareOpt} type="image/webp" />
-            <source srcSet={roadShare} type="image/png" />
-            <img src={roadShare} alt="roadShare" />
-          </picture>
-          <p>3500 mints - $1000 shared!</p>
+          <p>
+            After 75% is sold, a lucky holder will be rewarded with an artwork
+            of the great and powerful{" "}
+            <span className={classes.accent}>Banksy</span>!
+          </p>
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
@@ -245,17 +226,28 @@ const Roadmap = () => {
             <img src={road4} alt="road4" />
           </picture>
           <p>
-            We will also have a cute Pudgy Penguin NFT for you
-            <br /> as we get to 4000!
+            And finally - at 100% - we will make a 15 ETH donation to{" "}
+            <span className={classes.accent}>Crime Victims Fund</span>!
           </p>
         </div>
+      </div>
+      <h2>POST-SALE ACTIVITIES</h2>
+      <div className={classes.roadmapBox}>
         <div className={classes.roadmapBoxItem}>
           <picture>
-            <source srcSet={roadShareOpt} type="image/webp" />
-            <source srcSet={roadShare} type="image/png" />
-            <img src={roadShare} alt="roadShare" />
+            <source srcSet={road7Opt} type="image/webp" />
+            <source srcSet={road7} type="image/png" />
+            <img src={road7} alt="road6" />
           </picture>
-          <p>4500 mints - $1000 shared!</p>
+          <p>
+            <span className={classes.accent}>Q4 2021</span>
+            <br />
+            <br /> We release the $HEIST token and list it on major crypto
+            decentralized exchanges!
+            <br />
+            <br /> Every holder will be able to stake their NFTs from both The
+            Cryminals generations!
+          </p>
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
@@ -263,15 +255,14 @@ const Roadmap = () => {
             <source srcSet={road5} type="image/png" />
             <img src={road5} alt="road5" />
           </picture>
-          <p>5000 milestone will get you a Bored Ape Kennel Club NFT!</p>
-        </div>
-        <div className={classes.roadmapBoxItem}>
-          <picture>
-            <source srcSet={roadShareOpt} type="image/webp" />
-            <source srcSet={roadShare} type="image/png" />
-            <img src={roadShare} alt="roadShare" />
-          </picture>
-          <p>5500 mints - $1000 shared!</p>
+          <p>
+            <span className={classes.accent}>Q4 2021</span>
+            <br />
+            <br /> Start of a play-to-earn game development.
+            <br />
+            <br /> Get ready for the new characters and a brand new experience
+            in the expanded multiverse!
+          </p>
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
@@ -279,72 +270,30 @@ const Roadmap = () => {
             <source srcSet={road6} type="image/png" />
             <img src={road6} alt="road6" />
           </picture>
-          <p>A Cool Cat NFT will be secretly adopted as we get 6000 members!</p>
-        </div>
-        <div className={classes.roadmapBoxItem}>
-          <picture>
-            <source srcSet={roadShareOpt} type="image/webp" />
-            <source srcSet={roadShare} type="image/png" />
-            <img src={roadShare} alt="roadShare" />
-          </picture>
-          <p>6500 mints - $1000 shared!</p>
-        </div>
-        <div className={classes.roadmapBoxItem}>
-          <picture>
-            <source srcSet={road7Opt} type="image/webp" />
-            <source srcSet={road7} type="image/png" />
-            <img src={road7} alt="road7" />
-          </picture>
           <p>
-            7000 gangsters will sneak into the Mutant Ape Yacht Club and get an
-            NFT!
+            <span className={classes.accent}>Q2 2022</span>
+            <br />
+            <br /> Launch of The Cryminals 3D collection.
+            <br />
+            <br /> All the current holders will be whitelisted for a cheaper
+            mint!
           </p>
-        </div>
-        <div className={classes.roadmapBoxItem}>
-          <picture>
-            <source srcSet={roadShareOpt} type="image/webp" />
-            <source srcSet={roadShare} type="image/png" />
-            <img src={roadShare} alt="roadShare" />
-          </picture>
-          <p>7500 mints - $1000 shared!</p>
         </div>
         <div className={classes.roadmapBoxItem}>
           <picture>
             <source srcSet={road8Opt} type="image/webp" />
             <source srcSet={road8} type="image/png" />
-            <img src={road8} alt="road8" />
+            <img src={road8} alt="road6" />
           </picture>
           <p>
-            A Meebit NFT is our reward for bringing together 8000 partners in
-            crime!
+            <span className={classes.accent}>Q3 2022</span>
+            <br />
+            <br /> The first survival play-to-earn Heist Games will be launched
+            on Flow blockchain!
           </p>
         </div>
-        <div className={classes.roadmapBoxItem}>
-          <picture>
-            <source srcSet={roadShareOpt} type="image/webp" />
-            <source srcSet={roadShare} type="image/png" />
-            <img src={roadShare} alt="roadShare" />
-          </picture>
-          <p>8500 mints - $1000 shared!</p>
-        </div>
-        <div className={classes.roadmapBoxItem}>
-          <picture>
-            <source srcSet={road9Opt} type="image/webp" />
-            <source srcSet={road9} type="image/png" />
-            <img src={road9} alt="road9" />
-          </picture>
-          <p>9000 members will pave the way to a Gutter Cat Gang NFT!</p>
-        </div>
-        <div className={classes.roadmapBoxItem}>
-          <picture>
-            <source srcSet={roadShareOpt} type="image/webp" />
-            <source srcSet={roadShare} type="image/png" />
-            <img src={roadShare} alt="roadShare" />
-          </picture>
-          <p>9500 mints - $1000 shared!</p>
-        </div>
       </div>
-      <div className={classes.mainPic}>
+      {/* <div className={classes.mainPic}>
         <picture>
           <source srcSet={road10Opt} type="image/webp" />
           <source srcSet={road10} type="image/png" />
@@ -354,8 +303,8 @@ const Roadmap = () => {
           The final mission and the wildest theft ever committed as a 10k Gang -
           a Bored Ape Yacht Club NFT!
         </p>
-      </div>
-      <h2>HEISTS IN PROGRESS</h2>
+      </div> */}
+      {/* <h2>HEISTS IN PROGRESS</h2>
       <div className={classes.heists}>
         {testData.map((item, idx) => (
           <ProgressBar
@@ -367,8 +316,8 @@ const Roadmap = () => {
             maxColor={item.maxColor}
           />
         ))}
-      </div>
-      <h2>
+      </div> */}
+      {/* <h2>
         NOW THE LOOT IS SHARED...
         <br /> WHAT’S NEXT?
       </h2>
@@ -406,7 +355,7 @@ const Roadmap = () => {
           <br />
           Please note: actual loot may be a different mint from the one shown.
         </small>
-      </div>
+      </div> */}
       <Chain />
     </section>
   );
