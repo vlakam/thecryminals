@@ -49,7 +49,7 @@ const FAQ = () => {
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
-              Purchasing a Cryminal costs 0.05 ETH + gas fee. There is no
+              Purchasing a Cryminal costs 0.025 ETH + gas fee. There is no
               bonding curve! Unfortunately, we can’t control the additional
               fees, but we do hope you will get yourself a gangster without any
               problems :)
