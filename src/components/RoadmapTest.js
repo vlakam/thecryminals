@@ -271,7 +271,7 @@ const Roadmap = () => {
             <img src={road6} alt="road6" />
           </picture>
           <p>
-            <span className={classes.accent}>Q2 2022</span>
+            <span className={classes.accent}>Q1 2022</span>
             <br />
             <br /> Launch of The Cryminals 3D collection.
             <br />
@@ -286,7 +286,7 @@ const Roadmap = () => {
             <img src={road8} alt="road6" />
           </picture>
           <p>
-            <span className={classes.accent}>Q3 2022</span>
+            <span className={classes.accent}>Q2 2022</span>
             <br />
             <br /> The first survival play-to-earn Heist Games will be launched
             on Flow blockchain!
