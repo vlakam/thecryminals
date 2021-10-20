@@ -226,8 +226,13 @@ const Roadmap = () => {
             <img src={road4} alt="road4" />
           </picture>
           <p>
-            And finally - at 100% - we will make a 15 ETH donation to{" "}
-            <span className={classes.accent}>Crime Victims Fund</span>!
+            And finally - at 100% - we will transfer 20 ETH to <br />
+            <span className={classes.accent}>The Cryme Pool!</span>
+            <br />
+            <br />
+            With our
+            <span className={classes.accent}> new DAO system</span> you'll be
+            able to choose our future heists!
           </p>
         </div>
       </div>

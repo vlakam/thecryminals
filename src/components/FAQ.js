@@ -16,69 +16,133 @@ const FAQ = () => {
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              <p>What is NFT?</p>
+              <p>
+                When does The Cryminals collection Relaunch? When can I mint?
+              </p>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>Public Sale: Monday 25th 4PM EDT</p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              <p>How do I get on the pre-sale?</p>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>There will not be a Pre-sale for the Relaunch</p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              <p>Where do we Mint?</p>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>https://thecryminals.com/mint</p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              <p>How many Cryminals will be created?</p>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
-              NFT (non-fungible token) is an information or data stored on the
-              blockchain. Owning an NFT means owning the original image, music
-              track, animation - you name it! You can easily trade any pieces of
-              art as well as store them in your Metamask wallet.
+              10.000 unique Cryminals will be created in total. 1600 will be put
+              aside for owners of the Cryminal OG collection
             </p>
           </AccordionItemPanel>
         </AccordionItem>
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              <p>What is minting?</p>
+              <p>How much will it cost to mint?</p>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>0.025 ETH + gas per transaction</p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              <p>How many can I mint?</p>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>This information to follow</p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              <p>Which wallet do I need to mint?</p>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>Our website supports MetaMask wallet - https://metamask.io/</p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              <p>Where can I see my Cryminals?</p>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
-              Minting is a process of creation of NFTs. Whenever you put your
-              digital assets on the blockchain - that’s minting!
+              Your Cryminals will be available on your profile on
+              https://opensea.io/ usually instantly but can take up to 5-10
+              minutes after purchase
             </p>
           </AccordionItemPanel>
         </AccordionItem>
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              <p>HOW MUCH DOES THE MINT COST?</p>
+              <p>When is the reveal?</p>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <p>
-              Purchasing a Cryminal costs 0.025 ETH + gas fee. There is no
-              bonding curve! Unfortunately, we can’t control the additional
-              fees, but we do hope you will get yourself a gangster without any
-              problems :)
-            </p>
+            <p>5-10 minutes after purchase</p>
           </AccordionItemPanel>
         </AccordionItem>
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              <p>What can i do with my cryminal?</p>
+              <p>Will there be a bonding curve?</p>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <p>
-              Literally anything your heart desires! As long as you own your
-              personal Cryminal, you have a right to use it as you wish! <br />
-              Besides that, you become a member of The Gang which lets you
-              decide how to develop the project in the future.
-            </p>
+            <p>Of course not.</p>
           </AccordionItemPanel>
         </AccordionItem>
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              <p>How to contact the team?</p>
+              <p>What will happen next?</p>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <p>You can reach us on Twitter and Discord any time!</p>
+            <p>See roadmap</p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              <p>I want to help, what can I do?</p>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Spreading the word about our mission on Twitter & Discord is
+              great! If you want to do more, feel free to reach out to us in DM
+            </p>
           </AccordionItemPanel>
         </AccordionItem>
       </Accordion>

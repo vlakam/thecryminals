@@ -20,7 +20,12 @@ const About = () => {
       <h1>Welcome to the gang!</h1>
       <div className={classes.gifbox}>
         <p>
-          <p className={classes.price}>0,025 ETH EACH!</p>
+          <p className={classes.price}>
+            October 25th - 4 PM EDT
+            <br />
+            <br />
+            0,025 ETH EACH!
+          </p>
           Metacity is never going to be the same. The Apocalypse has wiped all
           the Cryminals out of existence. The virtual streets remained
           suspiciously quiet, and there was no more chaos and violence going on.
