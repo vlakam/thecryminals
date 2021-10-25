@@ -16,8 +16,6 @@ import {
 import Timer from "../components/Timer.js";
 
 const Mint = () => {
-  const targetDate = new Date("2021-10-25T19:59:59.000Z");
-  const [timeLeft, setTimeLeft] = useState(Timer(targetDate));
   const supply = useStore($supply);
   const isSaleAcitve = useStore($contractSaleActive);
   const maxClaimable = useStore($maxClaimable);
@@ -44,12 +42,6 @@ const Mint = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      setTimeLeft(Timer(targetDate));
-    }, 1000);
-  }, [timeLeft]);
-
-  useEffect(() => {
     getSupplyFx();
   }, []);
 
@@ -63,7 +55,7 @@ const Mint = () => {
         </picture>
         <div className={classes.content}>
           <div className={classes.left}>
-            {!isSaleAcitve && <div className={classes.timer}>{timeLeft}</div>}
+            {!isSaleAcitve && <Timer />}
             <h3>AMOUNT OF CRYMINALS</h3>
             <div className={classes.counterbox}>
               <div className={classes.mintBtnGrp}>

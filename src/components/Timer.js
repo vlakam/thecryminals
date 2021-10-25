@@ -1,4 +1,7 @@
-const Timer = (targetDate) => {
+import classes from "./Timer.module.css";
+import { useEffect, useState } from "react";
+
+const calculateTime = (targetDate) => {
   const difference = +targetDate - +new Date();
   const padNumber = (num) => num.toString().padStart(2, "0");
 
@@ -15,5 +18,19 @@ const Timer = (targetDate) => {
 
   return "Starting soon";
 };
+
+const Timer = () => {
+  const targetDate = new Date("2021-10-25T19:59:59.000Z");
+  const [timeLeft, setTimeLeft] = useState(calculateTime(targetDate));
+  useEffect(() => {
+    setTimeout(() => {
+      setTimeLeft(calculateTime(targetDate));
+    }, 1000);
+  }, [timeLeft]);
+
+  return (
+    <div className={classes.timer}>{timeLeft}</div>
+  );
+}
 
 export default Timer;
