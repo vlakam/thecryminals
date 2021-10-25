@@ -5,6 +5,8 @@
   line-height: 50px;
   letter-spacing: 0.05em;
   margin-bottom: 72px;
+  width: 25rem;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
