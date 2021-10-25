@@ -130,55 +130,92 @@ export const $contract = $web3.map((web3) => {
     }
 });
 
-const getSaleActiveFx = attach({
-    effect: createEffect(async ($contract) => {
-        if (!$contract) return 0;
-        return parseInt(await $contract.methods.saleStatus().call());
-    }),
-    source: $contract,
-    mapParams: (_, contract) => contract,
-});
-
 const getSupplyFromEtherscan = async () => {
     const resp = await fetch(`https://api.etherscan.io/api?module=stats&action=tokensupply&contractaddress=${address}`);
-    if (!resp.ok) throw 'Failed to get from etherscan';
+    if (!resp.ok) throw new Error('Failed to get from etherscan');
     const json = await resp.json();
-    if (json.status === '0') throw 'Failed to get from etherscan';
+    if (json.status === '0') throw new Error('Failed to get from etherscan');
 
     return parseInt(json.result);
 }
 
-const getSupplyFx = attach({
+export const getSupplyFx = attach({
     effect: createEffect(async ($contract) => {
         const max = 10000;
+        let reserved = 1600;
         if (!$contract) {
             const total = await getSupplyFromEtherscan();
-            return { max, total };
+            return { max, total, reserved };
         }
         const total = parseInt(await $contract.methods.totalSupply().call());
-        return { total, max };
+        reserved = parseInt(await $contract.methods.reservedSupply().call());
+        return { total, max, reserved };
     }),
     source: $contract,
     mapParams: (_, contract) => contract,
 });
 
-export const $contractSaleActive = restore(getSaleActiveFx.doneData, 0);
-export const $supply = restore(getSupplyFx.doneData, { total: 0, max: 10000 });
+const getMintingTimestampFx = attach({
+    effect: createEffect(async ($contract) => {
+        const timestamp = parseInt(await $contract.methods.mintingStartTimestamp().call());
+        return timestamp * 1000;
+    }),
+    source: $contract,
+    mapParams: (_, contract) => contract,
+});
 
+export const $mintingTimestamp = restore(getMintingTimestampFx, Date.UTC(2021, 9, 25, 19, 59, 59, 0));
+export const $contractSaleActive = $mintingTimestamp.map((timestamp) => {
+    return Date.now() > timestamp;
+});
+export const $supply = restore(getSupplyFx.doneData, { total: 0, max: 10000, reserved: 1600 });
 
-const getMaxMintableFx = attach({
+const BASE_URL = 'https://api.thecryminals.com/';
+const accountDataURL = (acc) => `${BASE_URL}transaction/data?address=${acc}`;
+const accountSignUrl = `${BASE_URL}transaction/data/signed`;
+
+const getMaxClaimableAPI = async (account) => {
+    if (!account) return 0;
+    const resp = await fetch(accountDataURL(account));
+    if (!resp.ok) return 0;
+    const { data } = await resp.json();
+    const { value: maxClaimableBackend } = data.find(({ name }) => name === 'claims');
+    // debugger;
+    return maxClaimableBackend;
+
+    // return 5;// json.count;
+}
+
+const getMaxClaimableFx = attach({
     effect: createEffect(async ({ $account, $contract }) => {
         if (!$account || !$contract) return 0;
-        const saleStatus = parseInt(await $contract.methods.saleStatus().call());
-        if (saleStatus === 0) return 20;
-        const minted = parseInt(await $contract.methods.balanceOf($account).call());
+        try {
+            const maxClaimable = await getMaxClaimableAPI($account);
+            const claimed = parseInt(await $contract.methods.claimed($account).call());
 
-        return Math.max(20 - minted, 0);
+            return Math.max(maxClaimable - claimed, 0);
+        } catch (e) {
+            return 0;
+        }
     }),
     source: { $contract, $account },
     mapParams: (_, a) => a,
 });
-export const $maxMintable = restore(getMaxMintableFx.doneData, 0);
+export const $maxClaimable = restore(getMaxClaimableFx, 0);
+
+const getMaxMintableFx = attach({
+    effect: createEffect(async ({ $account, $supply }) => {
+        if (!$account) return 50;
+        const { max, total, reserved } = $supply
+
+        return Math.min(50, max - total - reserved);
+    }),
+    source: {$account, $supply },
+    mapParams: (_, a) => a,
+});
+
+export const $maxMintable = restore(getMaxMintableFx, 50);
+
 export const mintFx = attach({
     effect: createEffect(async ({
         $ethereum,
@@ -186,21 +223,21 @@ export const mintFx = attach({
         $isChainOK,
         $account,
         amount,
-        $contractSaleActive,
         $maxMintable,
+        $contractSaleActive,
         $web3
     }) => {
         if (!$ethereum) throw errorMessageFx("Non-Ethereum browser detected. You should consider trying MetaMask!");
         if (!$contract) throw errorMessageFx("Failed to initialize contract");
         if (!$isChainOK) throw errorMessageFx("You are on the wrong chain");
         if (!$account) throw errorMessageFx("Press connect button");
-        if ($contractSaleActive === 0)
+        if (!$contractSaleActive)
             throw errorMessageFx("This sale is not active yet");
         if (amount > $maxMintable)
             throw errorMessageFx(`Not able to mint above your limit: ${$maxMintable}`);
 
         try {
-            const tokenPrice = Web3.utils.toWei("0.05", 'ether');
+            const tokenPrice = Web3.utils.toWei("0.025", 'ether');
             const gasPrice = await $web3.eth.getGasPrice();
             let gasLimit;
             try {
@@ -258,25 +295,52 @@ export const giftFx = attach({
         $ethereum,
         $contract,
         $isChainOK,
+        $contractSaleActive,
         $account,
+        amount,
         $web3
     }) => {
         if (!$ethereum) throw errorMessageFx("Non-Ethereum browser detected. You should consider trying MetaMask!");
         if (!$contract) throw errorMessageFx("Failed to initialize contract");
         if (!$isChainOK) throw errorMessageFx("You are on the wrong chain");
         if (!$account) throw errorMessageFx("Press connect button");
-        if ($contractSaleActive === 0)
+        if (!$contractSaleActive)
             throw errorMessageFx("This sale is not active yet");
 
         try {
-            const canGift = await $contract.methods.checkGift().call({
-                from: $account
-            });
-            if (!canGift) return errorMessageFx('You are not allowed to use Gift');
+            const maxClaimable = await getMaxClaimableAPI($account);
+            const claimed = parseInt(await $contract.methods.claimed($account).call());
+            if (maxClaimable === 0) throw new Error('You are now allowed to use gifts');
+            else if (maxClaimable <= claimed) throw new Error('You have used all your gifts');
+
+            const signature = await $web3.eth.personal.sign(
+                "Prove that you own address",
+                $account,
+                "password"
+            );
+            const resp = await fetch(
+                accountSignUrl,
+                {
+                    body: JSON.stringify({
+                        address: $account,
+                        signature,
+                    }),
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                }
+            );
+            if (!resp.ok) throw new Error("Failed to get information");
+            const { data, signature: backSignature } = await resp.json();
+            const { value: maxClaimableBackend } = data.find(({ name }) => name === 'claims');
+            console.log(maxClaimableBackend);
+            debugger;
             const gasPrice = await $web3.eth.getGasPrice();
             let gasLimit;
             try {
-                await $contract.methods.gift().estimateGas({
+                await $contract.methods.claim(amount, maxClaimable, backSignature).estimateGas({
                     value: 0,
                     from: $account,
                 });
@@ -286,7 +350,7 @@ export const giftFx = attach({
             console.log(gasPrice, gasLimit);
 
             try {
-                return await $contract.methods.gift().send({
+                return await $contract.methods.claim(amount, maxClaimable, backSignature).send({
                     from: $account,
                     value: 0,
                     maxPriorityFeePerGas: 1500000000,
@@ -320,14 +384,13 @@ export const giftFx = attach({
         $contractSaleActive,
         $web3
     },
-    mapParams: (_, source) => source
+    mapParams: (amount, source) => ({ ...source, amount })
 });
 
 
 getSupplyFx.finally.watch((amounts) => {
-    getSaleActiveFx();
+    getMintingTimestampFx();
+    getMaxClaimableFx();
     getMaxMintableFx();
     setTimeout(getSupplyFx, 10000);
 });
-
-getSupplyFx();

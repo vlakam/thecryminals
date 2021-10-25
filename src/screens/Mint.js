@@ -4,7 +4,7 @@ import mintWrapperOpt from "../assets/mintWrapper2.webp";
 import { useEffect, useState } from "react";
 import gif from "../assets/gif.webm";
 import { useStore } from "effector-react";
-import { $contractSaleActive, $supply, giftFx, mintFx } from "../stores/web3";
+import { $contractSaleActive, $maxClaimable, $maxMintable, $supply, giftFx, mintFx, getSupplyFx } from "../stores/web3";
 
 const calculateTimeLeft = (targetDate) => {
   const difference = +targetDate - +new Date();
@@ -29,24 +29,27 @@ const Mint = () => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
   const supply = useStore($supply);
   const isSaleAcitve = useStore($contractSaleActive);
+  const maxClaimable = useStore($maxClaimable);
+  const maxMintable = useStore($maxMintable);
   const isMintPending = useStore(mintFx.pending);
   const isGiftPending = useStore(giftFx.pending);
-  const [counter, setCounter] = useState(1);
+  const [mintAmount, setMintAmount] = useState(10);
+  const [claimAmount, setClaimAmount] = useState(1);
 
   const mint = () => {
-    mintFx(counter);
+    mintFx(mintAmount);
   };
 
   const gift = () => {
-    giftFx();
+    giftFx(claimAmount);
   };
 
-  const incrementHandler = () => {
-    setCounter(Math.min(5000, counter + 1));
+  const mintAmountHandler = (event) => {
+    setMintAmount(event.target.value);
   };
 
-  const decrementHandler = () => {
-    setCounter(Math.max(1, counter - 1));
+  const claimAmountHandler = (event) => {
+    setClaimAmount(event.target.value);
   };
 
   useEffect(() => {
@@ -54,6 +57,10 @@ const Mint = () => {
       setTimeLeft(calculateTimeLeft(targetDate));
     }, 1000);
   }, [timeLeft]);
+
+  useEffect(() => {
+    getSupplyFx();
+  }, [])
 
   return (
     <main>
@@ -65,63 +72,39 @@ const Mint = () => {
         </picture>
         <div className={classes.content}>
           <div className={classes.left}>
-            {isSaleAcitve !== 2 && (
+            {!isSaleAcitve && (
               <div className={classes.timer}>{timeLeft}</div>
             )}
             <h3>AMOUNT OF CRYMINALS</h3>
             <div className={classes.counterbox}>
-              <span onClick={decrementHandler}>
-                <svg
-                  width="30"
-                  height="48"
-                  viewBox="0 0 30 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className={classes.arrow}
+              <div className={classes.mintBtnGrp}>
+                <div>
+                  <input type="range" min="1" max={maxMintable} step="1" value={mintAmount} onChange={mintAmountHandler} />
+                  <span>{mintAmount}</span>
+                </div>
+                <button
+                  className={classes.mintButton}
+                  onClick={mint}
+                  disabled={!isSaleAcitve || isMintPending}
                 >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M24 0L30 6L12 24L30 42L24 48L0 24L24 0Z"
-                    fill="black"
-                  />
-                </svg>
-              </span>
-              {/* <input type="number" min="1" max="20" value={counter} /> */}
-              <span className={classes.counter}>{counter}</span>
-              <span onClick={incrementHandler}>
-                <svg
-                  width="30"
-                  height="48"
-                  viewBox="0 0 30 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className={classes.arrow}
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M6 48L-1.38281e-06 42L18 24L1.76441e-06 6.00001L6 5.53125e-06L30 24L6 48Z"
-                    fill="black"
-                  />
-                </svg>
-              </span>
-            </div>
-            <div className={classes.btnGroup}>
-              <button
-                className={classes.mintButton}
-                onClick={gift}
-                disabled={isSaleAcitve === 0 || isGiftPending}
-              >
-                GIFT
-              </button>
-              <button
-                className={classes.mintButton}
-                onClick={mint}
-                disabled={isSaleAcitve === 0 || isMintPending}
-              >
-                MINT
-              </button>
+                  MINT
+                </button>
+              </div>
+              { maxClaimable > 0 && 
+                <div className={`${classes.mintBtnGrp} ${maxClaimable === 0 ? classes.mintBtnGrpDisabled : ''}`}>
+                  {maxClaimable > 1 && <div>
+                    <input type="range" min="1" max={maxClaimable} step="1" value={claimAmount} onChange={claimAmountHandler} />
+                    <span>{claimAmount}</span>
+                  </div>}
+                  <button
+                    className={classes.mintButton}
+                    onClick={gift}
+                    disabled={!isSaleAcitve || isGiftPending}
+                  >
+                    GIFT
+                  </button>
+                </div>
+              }
             </div>
           </div>
           <div className={classes.right}>
