@@ -252,8 +252,8 @@ const Team = () => {
         </ul>
         <p className={classes.contract}>
           Verified OpenSea contract:{" "}
-          <a href="https://etherscan.io/address/0x17668c2718d498dd95693d384e70aea184c6325c">
-            0x17668c2718d498dd95693d384e70aea184c6325c
+          <a href="https://etherscan.io/address/0xd20e3ddc584d26a21c1b4059c128235d85f8c01c">
+            0xd20e3ddc584d26a21c1b4059c128235d85f8c01c
           </a>
         </p>
         {/* <ul className={[classes.grid, classes.secondGrid].join(" ")}></ul> */}

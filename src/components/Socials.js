@@ -56,7 +56,7 @@ const Socials = () => {
       </li>
       <li>
         <a
-          href="https://opensea.io/collection/the-cryminals-og"
+          href="https://opensea.io/collection/the-cryminal-resurrection"
           className={classes.opensea}
         >
           <svg
