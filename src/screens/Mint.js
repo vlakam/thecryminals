@@ -4,29 +4,20 @@ import mintWrapperOpt from "../assets/mintWrapper2.webp";
 import { useEffect, useState } from "react";
 import gif from "../assets/gif.webm";
 import { useStore } from "effector-react";
-import { $contractSaleActive, $maxClaimable, $maxMintable, $supply, giftFx, mintFx, getSupplyFx } from "../stores/web3";
-
-const calculateTimeLeft = (targetDate) => {
-  const difference = +targetDate - +new Date();
-  const padNumber = (num) => num.toString().padStart(2, "0");
-
-  if (difference > 0) {
-    let days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-    let minutes = Math.floor((difference / 1000 / 60) % 60);
-    let seconds = Math.floor((difference / 1000) % 60);
-
-    return `${padNumber(days)}d:${padNumber(hours)}h:${padNumber(
-      minutes
-    )}m:${padNumber(seconds)}s`;
-  }
-
-  return "Starting soon";
-};
+import {
+  $contractSaleActive,
+  $maxClaimable,
+  $maxMintable,
+  $supply,
+  giftFx,
+  mintFx,
+  getSupplyFx,
+} from "../stores/web3";
+import Timer from "../Timer.js";
 
 const Mint = () => {
   const targetDate = new Date("2021-10-25T19:59:59.000Z");
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
+  const [timeLeft, setTimeLeft] = useState(Timer(targetDate));
   const supply = useStore($supply);
   const isSaleAcitve = useStore($contractSaleActive);
   const maxClaimable = useStore($maxClaimable);
@@ -54,13 +45,13 @@ const Mint = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setTimeLeft(calculateTimeLeft(targetDate));
+      setTimeLeft(Timer(targetDate));
     }, 1000);
   }, [timeLeft]);
 
   useEffect(() => {
     getSupplyFx();
-  }, [])
+  }, []);
 
   return (
     <main>
@@ -72,14 +63,19 @@ const Mint = () => {
         </picture>
         <div className={classes.content}>
           <div className={classes.left}>
-            {!isSaleAcitve && (
-              <div className={classes.timer}>{timeLeft}</div>
-            )}
+            {!isSaleAcitve && <div className={classes.timer}>{timeLeft}</div>}
             <h3>AMOUNT OF CRYMINALS</h3>
             <div className={classes.counterbox}>
               <div className={classes.mintBtnGrp}>
                 <div>
-                  <input type="range" min="1" max={maxMintable} step="1" value={mintAmount} onChange={mintAmountHandler} />
+                  <input
+                    type="range"
+                    min="1"
+                    max={maxMintable}
+                    step="1"
+                    value={mintAmount}
+                    onChange={mintAmountHandler}
+                  />
                   <span>{mintAmount}</span>
                 </div>
                 <button
@@ -90,12 +86,25 @@ const Mint = () => {
                   MINT
                 </button>
               </div>
-              { maxClaimable > 0 && 
-                <div className={`${classes.mintBtnGrp} ${maxClaimable === 0 ? classes.mintBtnGrpDisabled : ''}`}>
-                  {maxClaimable > 1 && <div>
-                    <input type="range" min="1" max={maxClaimable} step="1" value={claimAmount} onChange={claimAmountHandler} />
-                    <span>{claimAmount}</span>
-                  </div>}
+              {maxClaimable > 0 && (
+                <div
+                  className={`${classes.mintBtnGrp} ${
+                    maxClaimable === 0 ? classes.mintBtnGrpDisabled : ""
+                  }`}
+                >
+                  {maxClaimable > 1 && (
+                    <div>
+                      <input
+                        type="range"
+                        min="1"
+                        max={maxClaimable}
+                        step="1"
+                        value={claimAmount}
+                        onChange={claimAmountHandler}
+                      />
+                      <span>{claimAmount}</span>
+                    </div>
+                  )}
                   <button
                     className={classes.mintButton}
                     onClick={gift}
@@ -104,7 +113,7 @@ const Mint = () => {
                     GIFT
                   </button>
                 </div>
-              }
+              )}
             </div>
           </div>
           <div className={classes.right}>
@@ -112,7 +121,7 @@ const Mint = () => {
               <source src={gif} type="video/webm" />
             </video>
             <div>
-              {/* <p className={classes.desc}>MAX LIMIT PER TRANSACTION: 20</p> */}
+              <p className={classes.desc}>MAX LIMIT PER TRANSACTION: 50</p>
               <p className={classes.desc}>PRICE: 0.025 ETH</p>
               {supply.total !== 0 && (
                 <p className={classes.desc}>
