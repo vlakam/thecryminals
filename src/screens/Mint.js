@@ -13,7 +13,7 @@ import {
   mintFx,
   getSupplyFx,
 } from "../stores/web3";
-import Timer from "../Timer.js";
+import Timer from "../components/Timer.js";
 
 const Mint = () => {
   const targetDate = new Date("2021-10-25T19:59:59.000Z");
